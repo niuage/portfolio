@@ -1,0 +1,88 @@
+body
+  background: #f0f0f0
+
+figure
+  margin: 0
+
+@mixin pseudo-elements
+  content: ""
+  position: absolute
+  top: 0
+  left: 0
+
+#header
+  background: black
+  position: relative
+  padding: 3em 0 16em
+
+  @media #{$medium}
+    padding: 6em 0 24em
+
+  #logo
+    width: 250px
+
+#content
+  padding: 3em (3rem - $column-gutter / 2)
+
+$fox-width: 600px
+#purple-fox
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 90%
+  left: 5%
+
+  @media #{$small}
+    width: $fox-width
+    margin-left: -$fox-width / 2
+    left: 50%
+
+.project
+  background: black
+  padding: 1em
+  color: white
+
+  .category
+    position: relative
+    text-transform: uppercase
+    font-weight: bold
+    letter-spacing: 1px
+    font-size: 0.8125em
+    padding: 0.5em 0 9em
+
+    &:before
+      @include pseudo-elements
+      height: 3px
+      background: white
+      width: 1.5em
+
+  .about
+    background: white
+    padding: 1em
+    box-shadow: 0 0 10px rgba(0,0,0,0.2)
+    // border-radius: 2px
+    position: relative
+
+    h2
+      font-weight: bold
+      font-size: 1.5em
+
+    p
+      color: $body-font-color
+      color: #999
+      font-size: 0.8125em
+
+    figure
+      min-height: 200px
+      margin-top: -110px
+      position: absolute
+      bottom: 100%
+      width: 90%
+
+      img
+        position: absolute
+        bottom: 0
+        left: 0
+
+#frog
+  background: #3d4762
