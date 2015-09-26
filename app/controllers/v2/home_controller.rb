@@ -17,6 +17,20 @@ module V2
           "website",
           "lemon.png",
           "benefitsy"
+        ],
+        [
+          "Spaceship",
+          "A better way to send your packages.",
+          "website",
+          "spaceship.png",
+          "spaceship"
+        ],
+        [
+          "Work at Devpost",
+          "A one-page site showcasing the dev life at Devpost.",
+          "website",
+          "love_devpost.png",
+          "love-devpost"
         ]
       ]
 

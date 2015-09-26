@@ -3,8 +3,10 @@ html
 
 body
   height: auto
-  box-shadow: 0 0 10px rgba(0,0,0,0.5)
-  margin: 1em
+  // box-shadow: 0 0 10px rgba(0,0,0,0.5)
+
+  @media #{$medium}
+    margin: 1em
 
 figure
   margin: 0
@@ -16,35 +18,95 @@ figure
   left: 0
 
 #top-nav
-  background: black
-  padding: 2em
+  padding: 2em 3em
+  margin-bottom: 3em
+
+  @media #{$medium}
+    margin-bottom: 6em
 
   li
     float: left
 
   a
     display: block
+    line-height: (50px / 2)
+    margin-right: 6em
+    font-size: 0.875em
+    color: #aaa
+    @include transition(all 0.3s)
+    position: relative
+
+    strong
+      display: block
+      text-transform: uppercase
+      color: white
+      font-weight: bold
+
+  a:not(#mini-logo)
+    padding: 3px 0
+
+    &:before
+      content: ""
+      position: absolute
+      top: 10px
+      left: -16px
+      height: 11px
+      width: 9px
+      border: 3px solid $light-purple
+      border-width: 3px 0px
+      // @include transform(rotate(45deg))
+      @include transition(border-color 0.2s)
+
+    &:hover
+      &:before
+        border-top-color: $light-purple
+        border-right-color: $pink
+        border-bottom-color: $green
+
+  li:nth-child(2) a:not(#mini-logo):before
+    border-width: 0 3px 0 0
+    // border-color: $pink
+
+  li:nth-child(3) a:not(#mini-logo):before
+    border-width: 3px 3px 0 0
+
+  li:nth-child(4) a:not(#mini-logo):before
+    border-width: 3px 3px 3px 0
+    // border-color: $green
+
+  #mini-logo
     line-height: 56px
 
 #mini-logo
   border: 3px solid white
-  height: 56px
-  width: 56px
-  padding: 1em
+
+  img
+    @include transition(all 0.3s)
+    height: 50px
+    width: 50px
+    padding: 1em
+    display: block
+
+  &:hover
+    @include transform(rotate(90deg))
+
+    img
+      @include transform(rotate(-90deg))
 
 #header
-  background: black image-url("a.svg") 3em center no-repeat
+  background: black image-url("ae-dark.svg") center bottom no-repeat
+  background-size: cover
   position: relative
-  padding: 3em 0 16em
+  padding-bottom: 16em
 
   @media #{$medium}
-    padding: 6em 0 24em
+    padding-bottom: 24em
 
   #logo
     width: 250px
 
 #content
-  padding: 3em (3rem - $column-gutter / 2)
+  padding: $column-gutter ($column-gutter / 2)
   background: #f0f0f0
 
 $fox-width: 600px
@@ -63,6 +125,7 @@ $fox-width: 600px
 .project
   background: black
   padding: 1em
+  margin-bottom: $column-gutter
   color: white
 
   .category
@@ -85,6 +148,7 @@ $fox-width: 600px
     box-shadow: 0 0 10px rgba(0,0,0,0.2)
     // border-radius: 2px
     position: relative
+    height: 140px
 
     h2
       font-weight: bold
@@ -113,3 +177,9 @@ $fox-width: 600px
 
 #benefitsy
   background: #00c097
+
+#spaceship
+  background: #1b2947
+
+#love-devpost
+  background: #e8c088
