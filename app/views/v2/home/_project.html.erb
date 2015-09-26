@@ -1,0 +1,15 @@
+<div class="project" id="<%= project.id %>">
+  <p class="category">
+    <%= project.category %>
+  </p>
+
+  <section class="about">
+    <h2><%= project.title %></h2>
+
+    <p><%= project.description %></p>
+
+    <figure class="text-center">
+      <%= image_tag "projects/#{project.image_url}" %>
+    </figure>
+  </section>
+</div>
