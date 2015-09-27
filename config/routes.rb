@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   namespace :v2 do
     root to: "home#index"
+
+    resources :projects
   end
 end

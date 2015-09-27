@@ -13,10 +13,7 @@
   "feature"
 ] %>
 
-<div class="project clearfix" id="<%= project.id %>"
-
-  >
-  <!-- style="background-image: url(<%= image_path("projects/#{project.image_url}") %>)" -->
+<div class="project clearfix" id="<%= project.id %>">
   <div class="clearfix">
     <div class="medium-3 columns">
       <div class="project-logo">
@@ -26,22 +23,9 @@
 
     <div class="medium-6 columns">
       <section class="about">
-        <% if false %>
-          <p class="date">July 10, 2010</p>
-        <% end %>
-
         <h2><%= project.title %></h2>
-
         <p><%=raw project.subtitle %></p>
 
-        <% if false %>
-        <p>
-          <small><%= project.description %></small>
-        </p>
-        <% end %>
-
-
-        <% if true %>
         <div class="row">
           <div class="row">
             <div class="medium-4 columns">
@@ -61,40 +45,15 @@
             </div>
           </div>
         </div>
-
-
-        <% end %>
-
-
-
-        <%#= image_tag "projects/#{project.image_url}" %>
       </section>
     </div>
 
     <div class="medium-3 columns">
       <%= image_tag "projects/#{project.image_url}", class: "triangle" %>
     </div>
-    <figure class="text-center medium-2 medium-pull-1">
-      <%#= image_tag "projects/#{project.image_url}" %>
-    </figure>
   </div>
 
-  <div class="clearfix highlight">
-    <div class="medium-12 columns">
-      <% if false %>
-      <footer>
-
-        <div><%= image_tag "projects/#{project.image_url}" %></div>
-
-        <%= render "v2/projects/#{project.id.underscore}", project: project %>
-      </footer>
-      <% end %>
-    </div>
-  </div>
-
-  <% if true %>
   <div class="huge-bg">
     <p><%= project.title %></p>
   </div>
-  <% end %>
 </div>
