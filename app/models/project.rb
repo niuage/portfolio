@@ -1,4 +1,7 @@
 class Project < Struct.new(:title, :subtitle, :description, :category, :image_url, :id, :button_copy)
+  extend ActiveModel::Naming
+  include ActiveModel::Conversion
+
   DATA = [
     [
       "HackerPond",
@@ -42,11 +45,15 @@ class Project < Struct.new(:title, :subtitle, :description, :category, :image_ur
     DATA.map { |data| new(*data) }
   end
 
-  def self.find(name)
-    name = name.downcase
-    data = DATA.find { |data| data[0].downcase = name }
+  def self.find(title)
+    title = title.downcase
+    data = DATA.find { |data| data[0].downcase == title }
     return nil unless data
 
     new(*data)
+  end
+
+  def to_param
+    title.parameterize
   end
 end

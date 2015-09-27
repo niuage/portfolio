@@ -1,12 +1,101 @@
-<header>
-  <div class="row">
-    <div class="medium-12 columns">
-      <a href="#" id="logo">
-        <%= image_tag "logo.svg" %>
-      </a>
+<header id="header">
+  <%= render "top_nav" %>
 
-      <!-- <h1>Code &amp; Design.</h1> -->
+  <%= image_tag "purple_fox.svg", id: "purple-fox" %>
+  <div class="row">
+    <div class="medium-12 columns text-center">
+      <%= link_to root_url do %>
+        <%= image_tag "logo_v2.svg", id: "logo" %>
+      <% end %>
     </div>
   </div>
-  <%= image_tag "landscape4.svg", id: "landscape" %>
 </header>
+
+<section id="intro" class="clearfix">
+  <div class="medium-3 columns">
+    <h5>Bonjour!</h5>
+  </div>
+  <!-- medium-push-3 -->
+  <div class="medium-6  columns">
+    <h3>I'm Robin, a web developer building websites for a living by day, and designing them for fun by night.</h3>
+
+    <h3>
+      This is a collection of my favorite work.
+    </h3>
+  </div>
+  <div class="medium-3 columns">
+  </div>
+</section>
+
+<nav id="categories" class="clearfix">
+  <!-- <div class="row"> -->
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="design"></span>
+          <span class="code"></span>
+        </span>
+        Full website
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="design"></span>
+        </span>
+        Design
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="code"></span>
+        </span>
+        Development
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="feature"></span>
+        </span>
+        Feature
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="feature"></span>
+        </span>
+        Personal
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="feature"></span>
+        </span>
+        Work
+      <% end %>
+    </div>
+  <!-- </div> -->
+</nav>
+
+<section id="content" class="clearfix">
+  <% if false %>
+    <div id="grid">
+      <div class="columns large-3"></div>
+      <div class="columns large-3"></div>
+      <div class="columns large-3"></div>
+      <div class="columns large-3"></div>
+    </div>
+  <% end %>
+
+  <div id="content-wrapper">
+    <% @projects.each do |project| %>
+    <!-- <div class="medium-6 columns"> -->
+      <%= render "project", project: project %>
+    <!-- </div> -->
+    <% end %>
+  </div>
+</section>

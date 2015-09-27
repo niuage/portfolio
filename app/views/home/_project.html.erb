@@ -13,7 +13,7 @@
   "feature"
 ] %>
 
-<div class="project clearfix" id="<%= project.id %>">
+<a class="project clearfix" href="<%= project_path(project) %>" id="<%= project.id %>">
   <div class="clearfix">
     <div class="medium-3 columns">
       <div class="project-logo">
@@ -29,7 +29,7 @@
         <div class="row">
           <div class="row">
             <div class="medium-4 columns">
-              <%= link_to project.button_copy, "#", class: "button" %>
+              <span class="button"><%= project.button_copy %></span>
             </div>
             <div class="medium-4 columns">
               <div class="category">
@@ -56,4 +56,4 @@
   <div class="huge-bg">
     <p><%= project.title %></p>
   </div>
-</div>
+</a>
