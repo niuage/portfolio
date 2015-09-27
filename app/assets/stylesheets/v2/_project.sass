@@ -1,0 +1,86 @@
+.project
+  // padding: $column-gutter $column-gutter 0
+  padding: 4em $column-gutter
+  position: relative
+  z-index: 2
+  // border-bottom: 1px solid #f0f0f0
+  background-repeat: no-repeat
+  background-position: left bottom
+  background-size: auto 10rem
+
+  .date
+    margin-top: 1.5rem
+
+  .category
+    position: relative
+    text-transform: uppercase
+    font-weight: bold
+    letter-spacing: 1px
+    font-size: 0.8125em
+    padding-top: 0.5em
+    color: #999
+    // margin-top: 1.5rem
+
+    &:before
+      @include pseudo-elements
+      height: 3px
+      background: black
+      width: 1.5em
+
+  .about
+
+    h2
+      font-weight: bold
+      font-size: 3.5em
+
+    p
+      color: $body-font-color
+      color: #999
+      font-size: 1.2em
+
+  figure
+    position: absolute
+    bottom: 0
+    opacity: 1
+    @include transition(all 0.3s)
+
+  &:hover
+    figure
+      opacity: 1
+
+  .highlight
+    img
+      display: block
+
+  .date
+    color: #aaa
+
+#frog
+  h2
+    color: #3d4762
+
+  footer
+    background: #3d4762
+
+#benefitsy
+  h2
+    color: #00c097
+
+#spaceship
+  h2
+    color: #1b2947
+
+#love-devpost
+
+  h2
+    color: #582143
+
+.huge-bg
+  font-size: 16em
+  line-height: 1
+  font-weight: bold
+  color: #f2f2f2
+  position: absolute
+  bottom: 0
+  z-index: -1
+  @extend .medium-push-1

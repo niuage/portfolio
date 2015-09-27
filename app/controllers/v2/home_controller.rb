@@ -8,7 +8,7 @@ module V2
           "HackerPond",
           "Complete redesign of the old Devpost homepage, with a pond theme.",
           "website",
-          "frog.png",
+          "hackerpond.png",
           "frog"
         ],
         [
@@ -29,7 +29,7 @@ module V2
           "Work at Devpost",
           "A one-page site showcasing the dev life at Devpost.",
           "website",
-          "love_devpost.png",
+          "devpost_love.png",
           "love-devpost"
         ]
       ]

@@ -37,12 +37,91 @@
   </div>
 </header>
 
-<section id="content" class="clearfix">
+<section id="intro" class="clearfix">
+  <div class="medium-3 columns">
+    <h5>Bonjour!</h5>
+  </div>
+  <!-- medium-push-3 -->
+  <div class="medium-6  columns">
+    <h3>I'm Robin, a web developer building websites for a living, and designing them for fun.</h3>
+
+    <h3>
+      This is collection of my best work.
+    </h3>
+  </div>
+  <div class="medium-3 columns">
+  </div>
+</section>
+
+<nav id="categories" class="clearfix">
   <!-- <div class="row"> -->
-    <% @projects.each do |project| %>
-      <div class="medium-6 large-4 columns">
-        <%= render "project", project: project %>
-      </div>
-    <% end %>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="design"></span>
+          <span class="code"></span>
+        </span>
+        Full website
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="design"></span>
+        </span>
+        Design
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="code"></span>
+        </span>
+        Development
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="feature"></span>
+        </span>
+        Feature
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="feature"></span>
+        </span>
+        Personal
+      <% end %>
+    </div>
+    <div class="medium-2 columns">
+      <%= link_to "#" do %>
+        <span class="globe">
+          <span class="feature"></span>
+        </span>
+        Work
+      <% end %>
+    </div>
   <!-- </div> -->
+</nav>
+
+<section id="content" class="clearfix">
+  <% if false %>
+    <div id="grid">
+      <div class="columns large-3"></div>
+      <div class="columns large-3"></div>
+      <div class="columns large-3"></div>
+      <div class="columns large-3"></div>
+    </div>
+  <% end %>
+
+  <div id="content-wrapper">
+    <% @projects.each do |project| %>
+    <!-- <div class="medium-6 columns"> -->
+      <%= render "project", project: project %>
+    <!-- </div> -->
+    <% end %>
+  </div>
 </section>
