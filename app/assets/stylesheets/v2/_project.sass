@@ -13,6 +13,16 @@
     background-color: #f6f6f6
     cursor: pointer
 
+    .huge-bg
+      // height: 12em
+
+      p
+        color: #f0f0f0
+
+    .about .button
+      border-color: $primary-color
+      color: $primary-color
+
   .date
     margin-top: 1.5rem
 
@@ -22,7 +32,7 @@
     font-weight: bold
     letter-spacing: 1px
     font-size: 0.8125em
-    line-height: 56px
+    line-height: 43px
     color: #999
     // margin-top: 1.5rem
 
@@ -33,9 +43,11 @@
       width: 1.5em
 
   .about
+    margin-bottom: 1em
+
     h2
       font-weight: bold
-      font-size: 3.5em
+      font-size: 3em
       margin-top: 40px
       margin-bottom: 0
 
@@ -43,6 +55,20 @@
       color: #666
       font-size: 1.2em
       margin-bottom: 2rem
+
+      small
+        font-size: 1.0rem
+        color: #888
+
+    .button
+      margin-right: 2em
+      margin-bottom: 0
+
+      border-color: #f0f0f0
+      color: #999
+      text-transform: uppercase
+      font-weight: bold
+      font-size: 0.8125em
 
     .date
       color: #aaa
@@ -84,6 +110,7 @@
       bottom: 0
 
   .triangle
+    margin-top: 20px
     max-height: 170px
 
 #frog
@@ -128,11 +155,18 @@
     // background: #582143
 
 .huge-bg
-  font-size: 16em
-  line-height: 1
-  font-weight: bold
-  color: #f2f2f2
   position: absolute
   bottom: 0
+  left: 0
   z-index: -1
-  @extend .medium-push-1
+  width: 100%
+  overflow: hidden
+  padding: 0 $column-gutter
+  height: 12em
+
+  p
+    @extend .medium-push-2
+    font-size: 16em
+    line-height: 1
+    font-weight: bold
+    color: #f9f9f9

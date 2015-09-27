@@ -32,18 +32,37 @@
 
         <h2><%= project.title %></h2>
 
-        <p><%= project.description %></p>
+        <p><%=raw project.subtitle %></p>
+
+        <% if false %>
+        <p>
+          <small><%= project.description %></small>
+        </p>
+        <% end %>
 
 
         <% if true %>
-        <div class="category">
-          <div class="globe">
-            <span class="<%= cycle(*globes, name: :globe) %>"></span>
+        <div class="row">
+          <div class="row">
+            <div class="medium-4 columns">
+              <%= link_to project.button_copy, "#", class: "button" %>
+            </div>
+            <div class="medium-4 columns">
+              <div class="category">
+                <div class="globe">
+                  <span class="<%= cycle(*globes, name: :globe) %>"></span>
+                </div>
+
+                <%= cycle(*categories, name: :category) %>
+
+              </div>
+            </div>
+            <div class="medium-4 columns">
+            </div>
           </div>
-
-          <%= cycle(*categories, name: :category) %>
-
         </div>
+
+
         <% end %>
 
 
@@ -73,7 +92,9 @@
     </div>
   </div>
 
-  <% if false %>
-  <p class="huge-bg"><%= project.title %></p>
+  <% if true %>
+  <div class="huge-bg">
+    <p><%= project.title %></p>
+  </div>
   <% end %>
 </div>
