@@ -1,9 +1,9 @@
 .project
   // padding: $column-gutter $column-gutter 0
-  padding: 4em $column-gutter
+  padding: 3em $column-gutter
   position: relative
   z-index: 2
-  // border-bottom: 1px solid #f0f0f0
+  border-bottom: 1px solid #f0f0f0
   background-repeat: no-repeat
   background-position: left bottom
   background-size: auto 10rem
@@ -34,9 +34,13 @@
       font-size: 3.5em
 
     p
-      color: $body-font-color
-      color: #999
+      color: #666
       font-size: 1.2em
+
+    .date
+      color: #aaa
+      font-size: 0.875rem
+      text-transform: uppercase
 
   figure
     position: absolute
@@ -52,28 +56,56 @@
     img
       display: block
 
-  .date
-    color: #aaa
+  .project-logo
+    height: 56px
+    width: 56px
+    border: 3px solid black
+    line-height: 50px
+    text-align: center
+
+    img
+      display: block
 
 #frog
+  .project-logo
+    // background: white
+    border-color: #3b953a
+
   h2
-    color: #3d4762
+    // color: #3d4762
 
   footer
     background: #3d4762
 
 #benefitsy
+  .project-logo
+    border-color: #00c097
   h2
-    color: #00c097
+    // color: #00c097
+
+  footer
+    background: #00c097
 
 #spaceship
   h2
-    color: #1b2947
+    // color: #1b2947
+
+  .project-logo
+    border-color: #1b2947
+    background: #1b2947
+
+  footer
+    background: #1b2947
 
 #love-devpost
+  .project-logo
+    border-color: #eac286
 
   h2
-    color: #582143
+    // color: #582143
+
+  footer
+    background: #582143
 
 .huge-bg
   font-size: 16em
