@@ -1,12 +1,17 @@
 .project
   // padding: $column-gutter $column-gutter 0
-  padding: 3em $column-gutter
+  padding: 2em $column-gutter
   position: relative
   z-index: 2
   border-bottom: 1px solid #f0f0f0
   background-repeat: no-repeat
   background-position: left bottom
   background-size: auto 10rem
+  // @include transition(background-color 0.3s ease-in-out)
+
+  &:hover
+    background-color: #f6f6f6
+    cursor: pointer
 
   .date
     margin-top: 1.5rem
@@ -17,25 +22,27 @@
     font-weight: bold
     letter-spacing: 1px
     font-size: 0.8125em
-    padding-top: 0.5em
+    line-height: 56px
     color: #999
     // margin-top: 1.5rem
 
     &:before
-      @include pseudo-elements
+      // @include pseudo-elements
       height: 3px
       background: black
       width: 1.5em
 
   .about
-
     h2
       font-weight: bold
       font-size: 3.5em
+      margin-top: 40px
+      margin-bottom: 0
 
     p
       color: #666
       font-size: 1.2em
+      margin-bottom: 2rem
 
     .date
       color: #aaa
@@ -66,6 +73,19 @@
     img
       display: block
 
+  footer
+    height: 120px
+    position: relative
+
+    img
+      max-height: 140px
+      position: absolute
+      left: 40%
+      bottom: 0
+
+  .triangle
+    max-height: 170px
+
 #frog
   .project-logo
     // background: white
@@ -75,7 +95,7 @@
     // color: #3d4762
 
   footer
-    background: #3d4762
+    // background: #3d4762
 
 #benefitsy
   .project-logo
@@ -84,7 +104,7 @@
     // color: #00c097
 
   footer
-    background: #00c097
+    // background: #00c097
 
 #spaceship
   h2
@@ -95,7 +115,7 @@
     background: #1b2947
 
   footer
-    background: #1b2947
+    // background: #1b2947
 
 #love-devpost
   .project-logo
@@ -105,7 +125,7 @@
     // color: #582143
 
   footer
-    background: #582143
+    // background: #582143
 
 .huge-bg
   font-size: 16em
