@@ -1,8 +1,13 @@
-<nav id="top-nav">
+<%
+  light = local_assigns[:light]
+  logo_path = light ? "a.svg" : "a-white.svg"
+%>
+
+<nav id="top-nav" class="<%= "light" if light %>">
   <ul class="no-bullet clearfix">
     <li>
       <%= link_to root_url, id: "mini-logo" do %>
-        <%= image_tag "a-white.svg" %>
+        <%#= image_tag logo_path %>
       <% end %>
     </li>
     <li>

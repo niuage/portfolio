@@ -1,4 +1,4 @@
-class Project < Struct.new(:title, :subtitle, :description, :category, :image_url, :id, :button_copy)
+class Project < Struct.new(:title, :subtitle, :description, :category, :image_fname, :id, :button_copy)
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
@@ -46,8 +46,7 @@ class Project < Struct.new(:title, :subtitle, :description, :category, :image_ur
   end
 
   def self.find(title)
-    title = title.downcase
-    data = DATA.find { |data| data[0].downcase == title }
+    data = DATA.find { |data| data[0].parameterize == title }
     return nil unless data
 
     new(*data)
@@ -55,5 +54,17 @@ class Project < Struct.new(:title, :subtitle, :description, :category, :image_ur
 
   def to_param
     title.parameterize
+  end
+
+  def logo_url
+    "logos/#{image_fname}"
+  end
+
+  def image_url
+    "projects/#{image_fname}"
+  end
+
+  def bg_image_url
+    "project_bgs/#{id}.svg"
   end
 end

@@ -1,3 +1,18 @@
-<header id="<%= dom_id(@project) %>">
-  <%= render "top_nav" %>
-</header>
+<div class="project-page" id="<%= dom_id(@project) %>">
+  <header id="header">
+    <%= render "top_nav" %>
+
+    <div class="row">
+      <div class="medium-12 columns text-center">
+        <h1><%= @project.title %></h1>
+        <h3><%= @project.subtitle %></h3>
+      </div>
+    </div>
+
+
+    <div id="project-header-image">
+      <%= image_tag @project.bg_image_url %>
+      <div id="stripe"></div>
+    </div>
+  </header>
+</div>

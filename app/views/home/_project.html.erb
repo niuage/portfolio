@@ -17,7 +17,7 @@
   <div class="clearfix">
     <div class="medium-3 columns">
       <div class="project-logo">
-        <%= image_tag "logos/#{project.image_url}" %>
+        <%= image_tag project.logo_url %>
       </div>
     </div>
 
@@ -49,7 +49,7 @@
     </div>
 
     <div class="medium-3 columns">
-      <%= image_tag "projects/#{project.image_url}", class: "triangle" %>
+      <%= image_tag project.image_url, class: "triangle" %>
     </div>
   </div>
 
