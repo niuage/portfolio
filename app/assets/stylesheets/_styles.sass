@@ -99,7 +99,8 @@ figure
   width: 50px
 
 #header
-  background: black image-url("ae-dark.svg") center bottom no-repeat
+  background: black
+  // image-url("ae-dark.svg") center bottom no-repeat
   background-size: cover
   position: relative
   padding-bottom: 16em
@@ -222,10 +223,15 @@ $globe-dim: 12px
     // &:nth-child(2), &:nth-child(3)
     //   background: #f5f5f5
 
-#intro
+#intro, #brief
   position: relative
   padding: $column-gutter
   z-index: 4
+  background: white
 
   h3
+    margin-top: $paragraph-margin-bottom
     margin-bottom: 1em
+
+figure
+  padding: 3em 0
