@@ -35,17 +35,24 @@
 <% if true %>
 <nav id="categories" class="clearfix">
   <!-- <div class="row"> -->
-    <div class="medium-2 columns">
+    <div class="medium-3 columns">
       <span class="light-text uppercase"><small>Legend</small></span>
     </div>
 
-    <% Category.all.each do |category| %>
-      <div class="medium-2 columns">
-        <%= link_to "#" do %>
-          <%= render category %>
-        <% end %>
+    <div class="medium-9 columns">
+      <div class="row">
+        <div class="row">
+          <% Category.all.each do |category| %>
+            <div class="medium-2 columns">
+              <%= link_to "#" do %>
+                <%= render category %>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="columns"></div>
+        </div>
       </div>
-    <% end %>
+    </div>
   <!-- </div> -->
 </nav>
 <% end %>
