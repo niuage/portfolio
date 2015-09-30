@@ -1,55 +1,25 @@
-class Project < Struct.new(:title, :subtitle, :description, :category, :image_fname, :id, :button_copy)
+class Project
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
-  DATA = [
-    [
-      "HackerPond",
-      "Developers, designers, product, UX... We're all hackers!",
-      "Complete redesign of the old Devpost homepage, with a pond theme. Just because.",
-      "website",
-      "frog.png",
-      "frog",
-      "Jump in"
-    ],
-    [
-      "Benefitsy",
-      "Find the good in food.",
-      "Benefitsy's a simple way to learn about the health benefits of fruits, vegetables and herbs.",
-      "website",
-      "lemon.png",
-      "benefitsy",
-      "Take a bite"
-    ],
-    [
-      "Spaceship",
-      "Crowdsourced shipping.",
-      "Chances are, a member is already headed that way, anyway.",
-      "website",
-      "spaceship.png",
-      "spaceship",
-      "Launch"
-    ],
-    [
-      "Why I love Devpost",
-      "A one-page site showing what it's like to be a developer at Devpost.",
-      "And why you will too.",
-      "website",
-      "devpost_love.png",
-      "love-devpost",
-      "Come visit"
-    ]
-  ]
+  attr_accessor :id, :title, :subtitle, :description, :categories, :button
+
+  def initialize(project_data)
+    project_data.each do |attr, value|
+      self.send(:"#{attr}=", value)
+    end
+  end
+
+  def categories=(categories)
+    @categories = Category.find_all(categories)
+  end
 
   def self.all
-    DATA.map { |data| new(*data) }
+    @all ||= I18n.t(:projects).map { |name, project_data| new(project_data) }
   end
 
   def self.find(title)
-    data = DATA.find { |data| data[0].parameterize == title }
-    return nil unless data
-
-    new(*data)
+    all.find { |project| project.to_param == title }
   end
 
   def to_param
@@ -57,11 +27,11 @@ class Project < Struct.new(:title, :subtitle, :description, :category, :image_fn
   end
 
   def logo_url
-    "logos/#{image_fname}"
+    "logos/#{id}.png"
   end
 
   def image_url
-    "projects/#{image_fname}"
+    "projects/#{id}.png"
   end
 
   def bg_image_url

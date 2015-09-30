@@ -14,71 +14,38 @@
 </header>
 
 <section id="intro" class="clearfix">
-  <div class="medium-6 medium-push-3 columns">
+  <div class="medium-3 columns">
+    <h3>Bonjour!</h3>
+  </div>
+  <!-- medium-push-3 -->
+  <div class="medium-6  columns">
     <h3>I'm Robin, a web developer building websites for a living by day, and designing them for fun by night.</h3>
 
     <h3>
       This is a collection of my favorite work.
     </h3>
   </div>
+  <div class="columns"></div>
 
   <div class="huge-bg">
     <p>Hello.</p>
   </div>
 </section>
 
-<% if false %>
+<% if true %>
 <nav id="categories" class="clearfix">
   <!-- <div class="row"> -->
     <div class="medium-2 columns">
-      <%= link_to "#" do %>
-        <span class="globe">
-          <span class="design"></span>
-          <span class="code"></span>
-        </span>
-        Full website
-      <% end %>
+      <span class="light-text uppercase"><small>Legend</small></span>
     </div>
-    <div class="medium-2 columns">
-      <%= link_to "#" do %>
-        <span class="globe">
-          <span class="design"></span>
-        </span>
-        Design
-      <% end %>
-    </div>
-    <div class="medium-2 columns">
-      <%= link_to "#" do %>
-        <span class="globe">
-          <span class="code"></span>
-        </span>
-        Development
-      <% end %>
-    </div>
-    <div class="medium-2 columns">
-      <%= link_to "#" do %>
-        <span class="globe">
-          <span class="feature"></span>
-        </span>
-        Feature
-      <% end %>
-    </div>
-    <div class="medium-2 columns">
-      <%= link_to "#" do %>
-        <span class="globe">
-          <span class="feature"></span>
-        </span>
-        Personal
-      <% end %>
-    </div>
-    <div class="medium-2 columns">
-      <%= link_to "#" do %>
-        <span class="globe">
-          <span class="feature"></span>
-        </span>
-        Work
-      <% end %>
-    </div>
+
+    <% Category.all.each do |category| %>
+      <div class="medium-2 columns">
+        <%= link_to "#" do %>
+          <%= render category %>
+        <% end %>
+      </div>
+    <% end %>
   <!-- </div> -->
 </nav>
 <% end %>

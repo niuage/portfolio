@@ -28,6 +28,9 @@ figure
     background-image: image-url("a.svg")
     border-color: black
 
+    &:hover
+      border-color: $light-purple
+
 #top-nav
   padding: 2em 3em
   margin-bottom: 3em
@@ -98,6 +101,9 @@ figure
   height: 50px
   width: 50px
 
+  &:hover
+    border-color: $light-purple
+
 #header
   background: black
   // image-url("ae-dark.svg") center bottom no-repeat
@@ -153,43 +159,29 @@ figure
 
   @include project_header_image(600px)
 
-$globe-dim: 12px
-.globe
-  border-radius: 50%
-  height: $globe-dim
-  width: $globe-dim
-  position: relative
+.cat-element
   display: inline-block
-  overflow: hidden
-  top: 1px
-  // @include transform(rotate(-45deg))
+  text-transform: none
+  line-height: 27px
+  text-align: center
+  margin-right: 6px
+  border-top: 3px solid transparent
+  font-weight: bold
+  font-size: 0.8125rem
 
-  span
-    display: block
-    position: absolute
-    left: 0
+  &.Co
+    border-color: $purple
 
-    &.design
-      background: $light-purple
-
-    &.code
-      background: $pink
-
-    &.feature
-      background: $green
-
-  span:first-child
-    height: $globe-dim
-    width: $globe-dim
-    top: 0
-
-  span:nth-child(2)
-    height: $globe-dim / 2
-    width: $globe-dim
-    top: $globe-dim / 2
+  &.De
+    border-color: $pink
+  &.Pe
+    border-color: $green
+  &.Wo
+    border-color: $yellow
+  &.Fe
+    border-color: $blue
 
 #categories
-  // background: #f9f9f9
   padding: 1em $column-gutter
 
   .columns
@@ -235,3 +227,9 @@ $globe-dim: 12px
 
 figure
   padding: 3em 0
+
+.light-text
+  color: #777
+
+.uppercase
+  text-transform: uppercase

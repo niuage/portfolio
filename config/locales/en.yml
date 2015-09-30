@@ -1,23 +1,56 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  categories:
+    - code
+    - design
+    - personal
+    - work
+    - feature
+
+  projects:
+    hackerpond:
+      id: hackerpond
+      title: HackerPond
+      subtitle: Developers, designers, product, UX... We're all hackers!
+      description:
+        Complete redesign of the old Devpost homepage, with a pond theme. Just because.
+      categories:
+        - code
+        - design
+        - personal
+      button: Jump in
+
+    benefitsy:
+      id: benefitsy
+      title: Benefitsy
+      subtitle: Find the good in food.
+      description:
+        Benefitsy's a simple way to learn about the health benefits of fruits, vegetables and herbs.
+      categories:
+        - code
+        - design
+        - personal
+      button: Take a bite
+
+    spaceship:
+      id: spaceship
+      title: Spaceship
+      subtitle: Crowdsourced shipping.
+      description:
+        Send anything, anywhere. Chances are, a member is already headed that way, anyway.
+      categories:
+        - code
+        - design
+        - personal
+      button: Launch
+
+    love_devpost:
+      id: love_devpost
+      title: Why I love devpost
+      subtitle: "&mdash; and why you will too"
+      description:
+        A one-page site showing what it's like to be a developer at Devpost.
+      categories:
+        - code
+        - design
+        - personal
+      button: Come visit

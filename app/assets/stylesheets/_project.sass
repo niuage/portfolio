@@ -1,5 +1,4 @@
 .project
-  // padding: $column-gutter $column-gutter 0
   padding: 2em $column-gutter
   position: relative
   z-index: 2
@@ -8,14 +7,11 @@
   background-position: left bottom
   background-size: auto 10rem
   display: block
-  // @include transition(background-color 0.3s ease-in-out)
 
   &:hover
     background-color: #f6f6f6
 
     .huge-bg
-      // height: 12em
-
       p
         color: #f0f0f0
 
@@ -34,10 +30,8 @@
     font-size: 0.8125em
     line-height: 43px
     color: #999
-    // margin-top: 1.5rem
 
     &:before
-      // @include pseudo-elements
       height: 3px
       background: black
       width: 1.5em
@@ -61,7 +55,6 @@
         color: #888
 
     .button
-      margin-right: 2em
       margin-bottom: 0
 
       border-color: #f0f0f0
@@ -113,46 +106,43 @@
     margin-top: 16px
     max-height: 170px
 
-#frog
+  .cat-name
+    display: none
+
+  .footer
+    li
+      float: left
+      line-height: 35px
+      margin-right: 2em
+      padding-right: 2em
+      border-right: 1px solid #eee
+
+      &:last-child
+        border-right: 0
+
+      span
+        color: #999
+
+      .cat-element
+        line-height: 36px
+        margin-right: 1em
+
+#hackerpond
   .project-logo
-    // background: white
     border-color: #3b953a
-
-  h2
-    // color: #3d4762
-
-  footer
-    // background: #3d4762
 
 #benefitsy
   .project-logo
     border-color: #00c097
-  h2
-    // color: #00c097
-
-  footer
-    // background: #00c097
 
 #spaceship
-  h2
-    // color: #1b2947
-
   .project-logo
     border-color: #1b2947
     background: #1b2947
 
-  footer
-    // background: #1b2947
-
-#love-devpost
+#love_devpost
   .project-logo
     border-color: #eac286
-
-  h2
-    // color: #582143
-
-  footer
-    // background: #582143
 
 .huge-bg
   position: absolute
@@ -163,7 +153,6 @@
   overflow: hidden
   padding: 0 $column-gutter
   height: 12em
-  // @include transition(height 0.1s ease-in-out)
 
   p
     @extend .medium-push-2
