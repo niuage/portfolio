@@ -15,7 +15,7 @@
 
 <section id="intro" class="clearfix">
   <div class="medium-3 columns">
-    <h3>Bonjour!</h3>
+    <h3 class="light-text">Bonjour!</h3>
   </div>
   <!-- medium-push-3 -->
   <div class="medium-6  columns">
@@ -33,28 +33,7 @@
 </section>
 
 <% if true %>
-<nav id="categories" class="clearfix">
-  <!-- <div class="row"> -->
-    <div class="medium-3 columns">
-      <span class="light-text uppercase"><small>Legend</small></span>
-    </div>
-
-    <div class="medium-9 columns">
-      <div class="row">
-        <div class="row">
-          <% Category.all.each do |category| %>
-            <div class="medium-2 columns">
-              <%= link_to "#" do %>
-                <%= render category %>
-              <% end %>
-            </div>
-          <% end %>
-          <div class="columns"></div>
-        </div>
-      </div>
-    </div>
-  <!-- </div> -->
-</nav>
+<%= render "categories/category_list", categories: Category.all, legend: true %>
 <% end %>
 
 <section id="content" class="clearfix">

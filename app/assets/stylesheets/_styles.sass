@@ -182,7 +182,10 @@ figure
     border-color: $blue
 
 #categories
+  position: relative
+  z-index: 4
   padding: 1em $column-gutter
+  border-bottom: 1px solid $project-separator-color
 
   .columns
     z-index: 3
@@ -210,20 +213,29 @@ figure
     border-left: 1px solid #ececec
 
     &:first-child
-      border: 0
+      // border: 0
+    &:last-child
+      border-right: 1px solid #ececec
 
     // &:nth-child(2), &:nth-child(3)
     //   background: #f5f5f5
 
-#intro, #brief
+#intro, #brief, #categories
   position: relative
   padding: $column-gutter
   z-index: 4
-  background: white
+  background: #fdfdfd
 
   h3
     margin-top: $paragraph-margin-bottom
     margin-bottom: 1em
+
+  .huge-bg
+    display: none
+
+  // &:hover
+  //   .huge-bg
+  //     display: block
 
 figure
   padding: 3em 0

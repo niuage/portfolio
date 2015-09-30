@@ -17,12 +17,11 @@
   </header>
 
   <section id="brief" class="clearfix">
-    <div class="medium-6 medium-push-3 columns">
-      <h3>I'm Robin, a web developer building websites for a living by day, and designing them for fun by night.</h3>
-
-      <h3>
-        This is a collection of my favorite work.
-      </h3>
+    <div class="medium-3 columns">
+      <h3 class="light-text">Brief</h3>
+    </div>
+    <div class="medium-6 columns">
+      <h3><%= @project.description %></h3>
     </div>
 
     <div class="huge-bg">
@@ -30,8 +29,10 @@
     </div>
   </section>
 
+  <%= render "categories/category_list", categories: @project.categories %>
+
   <section id="content" class="clearfix">
-    <%= render "grid" %>
+    <%#= render "grid" %>
     <div id="content-wrapper">
       <div class="medium-10 medium-push-1 columns">
         <figure>

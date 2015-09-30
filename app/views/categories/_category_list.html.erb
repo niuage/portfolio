@@ -1,0 +1,24 @@
+<% legend = local_assigns[:legend] %>
+
+<nav id="categories" class="clearfix">
+  <div class="medium-3 columns">
+    <% if legend %>
+    <span class="light-text uppercase"><small>Legend</small></span>
+    <% end %>
+  </div>
+
+  <div class="medium-9 columns">
+    <div class="row">
+      <div class="row">
+        <% categories.each do |category| %>
+          <div class="medium-2 columns">
+            <%= link_to "#" do %>
+              <%= render category %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="columns"></div>
+      </div>
+    </div>
+  </div>
+</nav>
