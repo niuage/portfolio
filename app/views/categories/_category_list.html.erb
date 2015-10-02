@@ -8,17 +8,15 @@
   </div>
 
   <div class="medium-9 columns">
-    <div class="row">
-      <div class="row">
-        <% categories.each do |category| %>
-          <div class="medium-2 columns">
-            <%= link_to "#" do %>
-              <%= render category %>
-            <% end %>
-          </div>
-        <% end %>
-        <div class="columns"></div>
-      </div>
+    <div class="fake-row">
+      <% categories.each do |category| %>
+        <div class="medium-2 columns">
+          <%= link_to "#" do %>
+            <%= render category %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="columns"></div>
     </div>
   </div>
 </nav>

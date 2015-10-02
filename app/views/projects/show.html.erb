@@ -33,12 +33,8 @@
 
   <section id="content" class="clearfix">
     <%#= render "grid" %>
-    <div id="content-wrapper">
-      <div class="medium-10 medium-push-1 columns">
-        <figure>
-          <img src="http://i.imgur.com/IIeRMCp.jpg">
-        </figure>
-      </div>
+    <div id="content-wrapper" class="clearfix">
+      <%= render @project.images %>
     </div>
   </section>
 </div>

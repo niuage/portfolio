@@ -3,7 +3,7 @@ html
 
 body
   height: auto
-  // box-shadow: 0 0 10px rgba(0,0,0,0.5)
+  box-shadow: 0 0 8px rgba(0,0,0,0.3)
 
   @media #{$medium}
     margin: 1em
@@ -169,17 +169,37 @@ figure
   font-weight: bold
   font-size: 0.8125rem
 
-  &.Co
-    border-color: $purple
+.Co
+  color: $purple
+  border-color: $purple
+.De
+  color: $pink
+  border-color: $pink
+.Pe
+  color: $green
+  border-color: $green
+.Wo
+  color: $yellow
+  border-color: $yellow
+.Fe
+  color: $blue
+  border-color: $blue
 
-  &.De
-    border-color: $pink
-  &.Pe
-    border-color: $green
-  &.Wo
-    border-color: $yellow
-  &.Fe
-    border-color: $blue
+.category
+  float: left
+
+  &:hover
+    .Co
+      color: $purple
+    .De
+      color: $pink
+    .Pe
+      color: $green
+    .Wo
+      color: $yellow
+    .Fe
+      color: $blue
+
 
 #categories
   position: relative
@@ -245,3 +265,6 @@ figure
 
 .uppercase
   text-transform: uppercase
+
+.fake-row
+  margin: 0 (-$column-gutter / 2)

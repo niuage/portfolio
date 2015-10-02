@@ -2,16 +2,30 @@ class Project
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
-  attr_accessor :id, :title, :subtitle, :description, :categories, :button
+  attr_accessor :id,
+    :title,
+    :subtitle,
+    :description,
+    :images,
+    :categories,
+    :button
 
   def initialize(project_data)
     project_data.each do |attr, value|
       self.send(:"#{attr}=", value)
     end
+    @images ||= []
+    @categories ||= []
   end
 
   def categories=(categories)
     @categories = Category.find_all(categories)
+  end
+
+  def images=(images)
+    @images = images.map do |image|
+      Image.new(self, *image)
+    end
   end
 
   def self.all

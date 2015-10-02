@@ -1,0 +1,14 @@
+<div class="image <%= image.type %>">
+  <div class="large-6 large-push-3 columns">
+    <figcaption>
+      <%= image.caption %>
+    </figcaption>
+  </div>
+  <div>
+    <div class="large-10 large-push-1 columns">
+      <figure>
+        <%= image_tag image.path, title: image.project.title %>
+      </figure>
+    </div>
+  </div>
+</div>

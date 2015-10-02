@@ -18,6 +18,11 @@ en:
         - design
         - personal
       button: Jump in
+      images:
+        -
+          - 1.png
+          - Full page view
+          - webpage
 
     benefitsy:
       id: benefitsy
