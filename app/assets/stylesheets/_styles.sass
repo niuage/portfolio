@@ -1,12 +1,14 @@
+$gold: #b9a270
+
 html
-  background: $light-purple
+  // background: $light-purple
 
 body
-  height: auto
+  height: 100%
   // box-shadow: 0 0 10px rgba(0,0,0,0.5)
 
-  @media #{$medium}
-    margin: 1em
+  // @media #{$medium}
+  //   margin: 1em
 
 figure
   margin: 0
@@ -32,11 +34,11 @@ figure
       border-color: $light-purple
 
 #top-nav
-  padding: 2em 3em
-  margin-bottom: 3em
+  padding: 2em 0
+  // margin-bottom: 3em
 
-  @media #{$medium}
-    margin-bottom: 6em
+  // @media #{$medium}
+    // margin-bottom: 6em
 
   li
     float: left
@@ -50,11 +52,10 @@ figure
     @include transition(all 0.3s)
     position: relative
 
-    strong
+    span
       display: block
       text-transform: uppercase
       color: white
-      font-weight: bold
 
   a:not(#mini-logo)
     padding: 3px 0
@@ -66,14 +67,14 @@ figure
       left: -16px
       height: 11px
       width: 9px
-      border: 3px solid $light-purple
+      border: 3px solid $pink
       border-width: 3px 0px
       // @include transform(rotate(45deg))
       @include transition(border-color 0.2s)
 
     &:hover
       &:before
-        border-top-color: $pink
+        border-top-color: $gold
         border-right-color: $green
         border-bottom-color: $light-purple
 
@@ -95,7 +96,7 @@ figure
 
 
 #mini-logo
-  border: 3px solid white
+  border: 3px solid $gold
   background: image-url("a-white.svg") center center no-repeat
   background-size: 28px 28px
   height: 50px
@@ -104,12 +105,12 @@ figure
   &:hover
     border-color: $light-purple
 
-#header
-  background: black
+.header
+  background: #111118
   // image-url("ae-dark.svg") center bottom no-repeat
   background-size: cover
   position: relative
-  padding-bottom: 16em
+  padding-bottom: 10em
   z-index: 2
 
   @media #{$medium}
@@ -117,6 +118,18 @@ figure
 
   #logo
     width: 250px
+
+
+#home-header
+  h1
+    color: white
+    font-weight: bold
+
+  h3
+    color: $gold
+    font-size: 1.4rem
+
+  height: 100%
 
 #content
   // padding: $column-gutter
@@ -244,4 +257,20 @@ figure
   color: #777
 
 .uppercase
+  text-transform: uppercase
+
+.content-middle
+  display: table
+  width: 100%
+  height: 100%
+
+.content-cell
+  display: table-cell
+  vertical-align: middle
+  height: 100%
+
+.serif
+  font-family: Georgia, serif
+
+.all-caps
   text-transform: uppercase

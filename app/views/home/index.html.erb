@@ -1,14 +1,19 @@
-<header id="header">
+<header id="home-header" class="header">
   <%= render "top_nav" %>
 
   <div id="project-header-image" class="purple-fox">
-    <%= image_tag "purple_fox.svg" %>
+    <%#= image_tag "purple_fox.svg" %>
+    <%= image_tag "knight3.png" %>
   </div>
+
+      <div class="content-middle">
+        <div class="content-cell">
   <div class="row">
     <div class="medium-12 columns text-center">
-      <%= link_to root_url do %>
-        <%= image_tag "logo_v2.svg", id: "logo" %>
-      <% end %>
+          <h3 class="serif all-caps">The adventures of</h3>
+          <h1>Robin Boutros</h1>
+        </div>
+      </div>
     </div>
   </div>
 </header>

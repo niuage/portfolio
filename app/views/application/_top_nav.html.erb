@@ -3,8 +3,8 @@
   logo_path = light ? "a.svg" : "a-white.svg"
 %>
 
-<nav id="top-nav" class="<%= "light" if light %>">
-  <ul class="no-bullet clearfix">
+<nav id="top-nav" class="row <%= "light" if light %>">
+  <ul class="no-bullet clearfix small-12 columns">
     <li>
       <%= link_to root_url, id: "mini-logo" do %>
         <%#= image_tag logo_path %>
@@ -12,20 +12,20 @@
     </li>
     <li>
       <%= link_to "#" do %>
-        <strong>My Work</strong>
-        Code &amp; Design.
+        <span>My Work</span>
+        Code &amp; design
       <% end %>
     </li>
     <li>
       <%= link_to "#" do %>
-        <strong>About</strong>
-        I like purple.
+        <span>Experience</span>
+
       <% end %>
     </li>
     <li>
       <%= link_to "#" do %>
-        <strong>Contact</strong>
-        Dribbble invite?
+        <span>Say hi</span>
+        niuage@gmail.com
       <% end %>
     </li>
   </ul>
