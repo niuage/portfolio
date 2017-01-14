@@ -35,10 +35,10 @@ figure
 
 #top-nav
   padding: 2em 0
-  // margin-bottom: 3em
+  margin-bottom: 3em
 
-  // @media #{$medium}
-    // margin-bottom: 6em
+  @media #{$medium}
+    margin-bottom: 6em
 
   li
     float: left
@@ -110,15 +110,10 @@ figure
   // image-url("ae-dark.svg") center bottom no-repeat
   background-size: cover
   position: relative
-  padding-bottom: 10em
   z-index: 2
-
-  @media #{$medium}
-    padding-bottom: 26em
 
   #logo
     width: 250px
-
 
 #home-header
   h1
@@ -129,8 +124,6 @@ figure
     color: $gold
     font-size: 1.4rem
 
-  height: 100%
-
 #content
   // padding: $column-gutter
   background: #f9f9f9
@@ -140,15 +133,13 @@ figure
   z-index: 100
 
 @mixin project_header_image($size)
-  @media #{$small}
+  @media #{$medium-up}
     img
       width: $size
       margin-left: -$size / 2
       left: 50%
 
 #project-header-image
-  position: absolute
-  bottom: 0
   width: 100%
 
   img
@@ -157,11 +148,7 @@ figure
     left: 0
     width: 90%
     left: 5%
-    max-height: 16em
     z-index: 10
-
-    @media #{$medium}
-      max-height: 24em
 
   #stripe
     width: 100%
