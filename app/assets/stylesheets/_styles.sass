@@ -40,16 +40,7 @@ figure
   &:hover
     border-color: $light-purple
 
-.header
-  background: $body-bg
-  background-size: cover
-  position: relative
-  z-index: 2
-
-  #logo
-    width: 250px
-
-#home-header
+.home-section
   h1
     color: white
     font-weight: bold
@@ -58,15 +49,11 @@ figure
     color: $gold
     font-size: 1.4rem
 
-.header-intro
-  background: image-url("knight7.png") right 80% no-repeat
-  background-size: 480px 450px
-
   padding-top: 3em
   padding-bottom: 6em
 
   @media #{$medium}
-    padding-top: 6em
+    padding-top: 8em
     padding-bottom: 12em
 
   h1
@@ -77,9 +64,21 @@ figure
     margin-bottom: 0
 
   p
-    color: $header-font-color
+    color: $font-color
     font-size: 1.2rem
     // color: #afa58f
+
+  &.light-section
+    background: lighten($body-bg, 2%)
+
+.header-intro
+  background: image-url("knight7.png") right 80% no-repeat
+  background-size: 480px 450px
+
+#about
+  padding-top: 7.1rem
+  background: image-url("me.png") left top no-repeat
+  // background-size: 480px 450px
 
 #content
 

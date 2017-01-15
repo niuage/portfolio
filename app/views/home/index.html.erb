@@ -1,7 +1,7 @@
-<header id="home-header" class="header">
+<header>
   <%= render "top_nav" %>
 
-  <div class="row header-intro">
+  <div class="row home-section header-intro">
     <div class="small-12 columns">
       <h3 class="serif all-caps">The adventures of</h3>
       <h1>Robin Boutros.</h1>
@@ -18,34 +18,37 @@
   </div>
 </header>
 
-<section id="intro" class="clearfix">
-  <div class="medium-3 columns">
-    <h3 class="light-text">Bonjour!</h3>
-  </div>
-  <!-- medium-push-3 -->
-  <div class="medium-6  columns">
-    <h3>I'm Robin, a web developer building websites for a living by day, and designing them for fun by night.</h3>
+<div class="home-section light-section">
+  <div id="about" class="row">
+    <div class="small-12 columns">
+      <div class="row">
+        <div class="small-8 small-push-4 columns">
+          <h3 class="serif all-caps">A little something</h3>
+          <h1>about me.</h1>
+        </div>
+      </div>
 
-    <h3>
-      This is a collection of my favorite work.
-    </h3>
-  </div>
-  <div class="columns"></div>
+      <div class="row">
+        <div class="small-3 small-push-3 columns">
+          <div class="separator"></div>
+        </div>
+        <div class="small-6 small-push-3 columns end">
+          <p>Rails developer building websites for a living by day, and designing them for fun by night.</p>
 
-  <div class="huge-bg">
-    <p>Hello.</p>
-  </div>
-</section>
+          <p>Rails developer building websites for a living by day, and designing them for fun by night. Rails developer building websites for a living by day, and designing them for fun by night.</p>
 
-<% if true %>
+          <p>Rails developer building websites for a living by day, and designing them for fun by night. Rails developer building websites for a living by day, and designing them for fun by night.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if false %>
 <%= render "categories/category_list", categories: Category.all, legend: true %>
 <% end %>
 
 <section id="content" class="clearfix">
-  <% if false %>
-    <%= render "grid" %>
-  <% end %>
-
   <div id="content-wrapper">
     <% @projects.each do |project| %>
     <!-- <div class="medium-6 columns"> -->

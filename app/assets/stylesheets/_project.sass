@@ -2,22 +2,22 @@
   padding: 2em $column-gutter
   position: relative
   z-index: 2
-  border-bottom: 1px solid $project-separator-color
+  // border-bottom: 1px solid $project-separator-color
   background-repeat: no-repeat
   background-position: left bottom
   background-size: auto 10rem
   display: block
 
   &:hover
-    background-color: #f6f6f6
+    background-color: lighten($body-bg, 3%)
 
     .huge-bg
       p
-        color: #f0f0f0
+        color: lighten($body-bg, 1%)
 
     .about .button
-      border-color: $primary-color
-      color: $primary-color
+      border-color: $gold
+      color: $gold
 
   .date
     margin-top: 1.5rem
@@ -40,13 +40,14 @@
     margin-bottom: 1em
 
     h2
+      color: white
       font-weight: bold
       font-size: 3em
       margin-top: 1rem
       margin-bottom: 0
 
     p
-      color: #666
+      color: $font-color
       font-size: 1.2em
       margin-bottom: 2rem
 
@@ -57,8 +58,8 @@
     .button
       margin-bottom: 0
 
-      border-color: #f0f0f0
-      color: #999
+      border-color: darken($font-color, 10%)
+      color: $font-color
       text-transform: uppercase
       font-weight: bold
       font-size: 0.8125em
@@ -115,7 +116,7 @@
       line-height: 35px
       margin-right: 2em
       padding-right: 2em
-      border-right: 1px solid #eee
+      border-right: 1px solid $font-color
 
       &:last-child
         border-right: 0
@@ -159,4 +160,4 @@
     font-size: 16em
     line-height: 1
     font-weight: bold
-    color: #f9f9f9
+    color: $body-bg
