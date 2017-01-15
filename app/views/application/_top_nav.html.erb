@@ -4,29 +4,23 @@
 %>
 
 <nav id="top-nav" class="row <%= "light" if light %>">
-  <ul class="no-bullet clearfix small-12 columns">
-    <li>
-      <%= link_to root_url do %>
-        Robin Boutros
-      <% end %>
-    </li>
-    <li>
-      <%= link_to "#" do %>
-        <span>My Work</span>
-        Code &amp; design
-      <% end %>
-    </li>
-    <li>
-      <%= link_to "#" do %>
-        <span>Experience</span>
+  <div class="small-2 columns">
+    <%= link_to root_url, id: "name", class: "all-caps" do %>
+      <strong>Robin Boutros</strong>
+    <% end %>
+  </div>
+  <div class="small-10 columns text-right">
+    <%= link_to "#" do %>
+      <span>Selected Work</span>
+      <!-- Code &amp; design -->
+    <% end %>
+    <%= link_to "#" do %>
+      <span>About</span>
 
-      <% end %>
-    </li>
-    <li>
-      <%= link_to "#" do %>
-        <span>Say hi</span>
-        niuage@gmail.com
-      <% end %>
-    </li>
-  </ul>
+    <% end %>
+    <%= link_to "#" do %>
+      <span>Contact</span>
+      <!-- niuage@gmail.com -->
+    <% end %>
+  </div>
 </nav>

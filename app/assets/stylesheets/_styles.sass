@@ -1,14 +1,11 @@
-$gold: #b9a270
-
 html
-  // background: $light-purple
+  background: $body-bg
+  margin: 1rem
+  border: 1px solid $gold
+  height: auto
 
 body
   height: 100%
-  // box-shadow: 0 0 10px rgba(0,0,0,0.5)
-
-  // @media #{$medium}
-  //   margin: 1em
 
 figure
   margin: 0
@@ -33,68 +30,6 @@ figure
     &:hover
       border-color: $light-purple
 
-#top-nav
-  padding: 2em 0
-  margin-bottom: 3em
-
-  @media #{$medium}
-    margin-bottom: 6em
-
-  li
-    float: left
-
-  a
-    display: block
-    line-height: (50px / 2)
-    margin-right: 6em
-    font-size: 0.875em
-    color: #aaa
-    @include transition(all 0.3s)
-    position: relative
-
-    span
-      display: block
-      text-transform: uppercase
-      color: white
-
-  a:not(#mini-logo)
-    padding: 3px 0
-
-    &:before
-      content: ""
-      position: absolute
-      top: 10px
-      left: -16px
-      height: 11px
-      width: 9px
-      border: 3px solid $pink
-      border-width: 3px 0px
-      // @include transform(rotate(45deg))
-      @include transition(border-color 0.2s)
-
-    &:hover
-      &:before
-        border-top-color: $gold
-        border-right-color: $green
-        border-bottom-color: $light-purple
-
-  li:nth-child(2) a:not(#mini-logo):before
-    border-width: 3px 0 0 0
-    // border-color: $pink
-
-  li:nth-child(3) a:not(#mini-logo):before
-    // border-width: 3px 3px 0 0
-    border-width: 3px 0 0 0
-
-  li:nth-child(4) a:not(#mini-logo):before
-    // border-width: 3px 3px 3px 0
-    border-width: 3px 0 0 0
-    // border-color: $green
-
-  #mini-logo
-    line-height: 56px
-
-
 #mini-logo
   border: 3px solid $gold
   background: image-url("a-white.svg") center center no-repeat
@@ -106,8 +41,7 @@ figure
     border-color: $light-purple
 
 .header
-  background: #111118
-  // image-url("ae-dark.svg") center bottom no-repeat
+  background: $body-bg
   background-size: cover
   position: relative
   z-index: 2
@@ -124,9 +58,30 @@ figure
     color: $gold
     font-size: 1.4rem
 
+.header-intro
+  background: image-url("knight7.png") right 80% no-repeat
+  background-size: 480px 450px
+
+  padding-top: 3em
+  padding-bottom: 6em
+
+  @media #{$medium}
+    padding-top: 6em
+    padding-bottom: 12em
+
+  h1
+    margin: 0 0 1rem
+    font-size: 5rem
+
+  h3
+    margin-bottom: 0
+
+  p
+    color: $header-font-color
+    font-size: 1.2rem
+    // color: #afa58f
+
 #content
-  // padding: $column-gutter
-  background: #f9f9f9
 
 #content-wrapper
   position: relative
@@ -261,3 +216,11 @@ figure
 
 .all-caps
   text-transform: uppercase
+
+.separator
+  width: 100%
+  height: 3px
+  background: $gold
+  margin-top: 0.5rem
+
+#name

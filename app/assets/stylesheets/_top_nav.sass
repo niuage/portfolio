@@ -1,0 +1,40 @@
+#top-nav
+  padding: 2em 0
+
+  #name
+    color: white
+    margin: 0
+
+    &:before
+
+  a
+    display: inline-block
+    margin-left: 6em
+    line-height: (50px / 2)
+    font-size: 0.875em
+    color: #aaa
+    @include transition(all 0.3s)
+    position: relative
+
+  a:not(#name)
+    &:before
+      content: ""
+      position: absolute
+      top: 7px
+      left: -16px
+      height: 10px
+      width: 10px
+      border: 3px solid $gold
+      @include transition(border-color 0.2s)
+
+    &:hover
+      &:before
+        border-color: $pink
+
+  a:not(#name):nth-child(1):before
+    transform: rotate(45deg)
+
+  a:not(#name):nth-child(2):before
+
+  a:not(#name):nth-child(3):before
+    border-radius: 10px
