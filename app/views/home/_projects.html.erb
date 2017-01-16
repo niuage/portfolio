@@ -1,0 +1,41 @@
+<div class="home-section">
+  <div id="work" class="row">
+    <div class="small-12 columns">
+      <div class="row">
+        <div class="small-10 small-push-2 columns">
+          <h3 class="serif all-caps">Code &amp; Design</h3>
+          <h1>Selected work.</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-4 columns">
+          <div class="separator"></div>
+        </div>
+        <div class="small-8 columns end">
+          <p>Rails developer building websites for a living by day, and designing them for fun by night.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if false %>
+  <% @projects.each_slice(2) do |projects| %>
+    <div class="row">
+      <% projects.each do |project| %>
+        <div class="small-6 columns">
+          <%= render "project2", project: project %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <% else %>
+    <div id="content-wrapper">
+      <% @projects.each do |project| %>
+      <!-- <div class="medium-6 columns"> -->
+        <%= render "project", project: project %>
+      <!-- </div> -->
+      <% end %>
+    </div>
+  <% end %>
+</div>

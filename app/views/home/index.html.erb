@@ -18,42 +18,12 @@
   </div>
 </header>
 
-<div class="home-section light-section">
-  <div id="about" class="row">
-    <div class="small-12 columns">
-      <div class="row">
-        <div class="small-8 small-push-4 columns">
-          <h3 class="serif all-caps">A little something</h3>
-          <h1>about me.</h1>
-        </div>
-      </div>
+<%= render "home/about" %>
 
-      <div class="row">
-        <div class="small-3 small-push-3 columns">
-          <div class="separator"></div>
-        </div>
-        <div class="small-6 small-push-3 columns end">
-          <p>Rails developer building websites for a living by day, and designing them for fun by night.</p>
+<%= render "home/projects" %>
 
-          <p>Rails developer building websites for a living by day, and designing them for fun by night. Rails developer building websites for a living by day, and designing them for fun by night.</p>
-
-          <p>Rails developer building websites for a living by day, and designing them for fun by night. Rails developer building websites for a living by day, and designing them for fun by night.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render "home/contact" %>
 
 <% if false %>
 <%= render "categories/category_list", categories: Category.all, legend: true %>
 <% end %>
-
-<section id="content" class="clearfix">
-  <div id="content-wrapper">
-    <% @projects.each do |project| %>
-    <!-- <div class="medium-6 columns"> -->
-      <%= render "project", project: project %>
-    <!-- </div> -->
-    <% end %>
-  </div>
-</section>

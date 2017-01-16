@@ -1,12 +1,12 @@
-<a class="project clearfix" href="<%= project_path(project) %>" id="<%= project.id %>">
-  <div class="clearfix">
-    <div class="medium-3 columns">
+<a class="project clearfix <%= cycle("light-project", "", name: :project) %>" href="<%= project_path(project) %>" id="  <%= project.id %>">
+  <div class="row">
+    <div class="medium-2 columns">
       <div class="project-logo">
         <%= image_tag project.logo_url %>
       </div>
     </div>
 
-    <div class="medium-6 columns">
+    <div class="medium-7 columns">
       <section class="about">
         <h2><%= project.title %></h2>
         <p><%=raw project.subtitle %></p>

@@ -1,0 +1,13 @@
+<a href="<%= project_path(project) %>" class="project-thumb">
+  <h2><%= project.title %></h2>
+  <p><%=raw project.subtitle %></p>
+
+  <ul class="no-bullet footer clearfix">
+    <li>
+      <span class="button"><%= project.button %></span>
+    </li>
+    <li>
+      <%= render project.categories %>
+    </li>
+  </ul>
+</a>

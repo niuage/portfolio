@@ -1,5 +1,5 @@
 .project
-  padding: 2em $column-gutter
+  padding: 4em $column-gutter
   position: relative
   z-index: 2
   // border-bottom: 1px solid $project-separator-color
@@ -9,15 +9,18 @@
   display: block
 
   &:hover
-    background-color: lighten($body-bg, 3%)
-
-    .huge-bg
-      p
-        color: lighten($body-bg, 1%)
-
     .about .button
       border-color: $gold
       color: $gold
+
+  &.light-project
+    background-color: lighten($body-bg, 1.5%)
+
+    .huge-bg
+      p
+        color: lighten($body-bg, 1.5%)
+
+    &:hover
 
   .date
     margin-top: 1.5rem
@@ -40,10 +43,9 @@
     margin-bottom: 1em
 
     h2
-      color: white
+      color: #fff5de
       font-weight: bold
       font-size: 3em
-      margin-top: 1rem
       margin-bottom: 0
 
     p
