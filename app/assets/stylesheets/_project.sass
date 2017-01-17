@@ -9,9 +9,18 @@
   display: block
 
   &:hover
+    .about
+      h2
+        color: white
+
     .about .button
       border-color: $gold
       color: $gold
+
+    .huge-bg
+      p
+        color: lighten($body-bg, 1.5%)
+
 
   &.light-project
     background-color: lighten($body-bg, 1.5%)
@@ -21,6 +30,9 @@
         color: lighten($body-bg, 1.5%)
 
     &:hover
+      .huge-bg
+        p
+          color: $body-bg
 
   .date
     margin-top: 1.5rem
