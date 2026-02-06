@@ -2,6 +2,13 @@
 const config = useRuntimeConfig()
 const baseURL = config.app.baseURL
 const route = useRoute()
+
+const currentSection = computed(() => {
+  if (route.path.startsWith('/work')) return 'work'
+  if (route.path.startsWith('/notebook')) return 'notebook'
+  if (route.path.startsWith('/about')) return 'about'
+  return 'home'
+})
 </script>
 
 <template>
@@ -10,6 +17,32 @@ const route = useRoute()
     <div class="absolute left-1/2 -translate-x-1/2 top-0 w-[50vw] md:w-[30vw] max-w-[32rem] px-4 z-10">
       <div class="relative">
         <img :src="`${baseURL}planet.png`" alt="Planet" class="w-full object-contain" />
+
+        <!-- Section Icon Overlay -->
+        <div class="absolute left-1/2 -translate-x-1/2 text-white" style="top: 20%">
+          <!-- Home -->
+          <svg v-if="currentSection === 'home'" class="w-6 h-6" viewBox="0 0 37 40" fill="none">
+            <path d="M3.5 23.5V18.5C3.5 10.2157 10.2157 3.5 18.5 3.5C26.7843 3.5 33.5 10.2157 33.5 18.5V23.5" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            <path d="M18.5 33.5C19.3284 33.5 20 34.1716 20 35C20 35.8284 19.3284 36.5 18.5 36.5C17.6716 36.5 17 35.8284 17 35C17 34.1716 17.6716 33.5 18.5 33.5Z" fill="currentColor" stroke="currentColor" stroke-width="7"/>
+          </svg>
+          <!-- Work -->
+          <svg v-else-if="currentSection === 'work'" class="w-6 h-6" viewBox="0 0 42 40" fill="none">
+            <path d="M12 29.0062L29 12.0062M18 3.50623C28.9639 3.23213 38 12.0451 38 23.0125V23.5062" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="3.5" cy="36.5062" r="3.5" fill="currentColor"/>
+          </svg>
+          <!-- Notebook -->
+          <svg v-else-if="currentSection === 'notebook'" class="w-6 h-6" viewBox="0 0 38 37" fill="none">
+            <path d="M3.5 3.5H33" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            <path d="M33.5132 33.5076L33.5 33.5" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            <path d="M4 18.5H33.5" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            <path d="M3.5 33.5H22.5" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+          </svg>
+          <!-- About -->
+          <svg v-else-if="currentSection === 'about'" class="w-6 h-6" viewBox="0 0 37 40" fill="none">
+            <path d="M3.5 36.5V32C3.5 23.7157 10.2157 17 18.5 17C26.7843 17 33.5 23.7157 33.5 32V36.5" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            <path d="M18.5 3.5C19.3284 3.5 20 4.17157 20 5C20 5.82843 19.3284 6.5 18.5 6.5C17.6716 6.5 17 5.82843 17 5C17 4.17157 17.6716 3.5 18.5 3.5Z" fill="currentColor" stroke="currentColor" stroke-width="7"/>
+          </svg>
+        </div>
 
         <!-- Orbiting Planets -->
         <div class="orbit-container orbit-1">
