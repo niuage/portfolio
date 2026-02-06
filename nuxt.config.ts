@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   ssr: false,
   target: 'static',
   app: {
-    baseURL: '/niu2026/',
+    baseURL: '/portfolio/',
     head: {
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
