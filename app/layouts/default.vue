@@ -46,10 +46,10 @@ const currentSection = computed(() => {
 
         <!-- Orbiting Planets (X/Y split animation for fixed elliptical paths) -->
         <!-- Debug: orbit path ellipses -->
-        <svg class="orbit-debug orbit-anchor-1" viewBox="-12 -7 24 14" style="width:24vw;height:14vw"><ellipse cx="0" cy="0" rx="12" ry="7" fill="none" stroke="red" stroke-width="0.2" opacity="0.4"/></svg>
-        <svg class="orbit-debug orbit-anchor-2" viewBox="-15 -9 30 18" style="width:30vw;height:18vw"><ellipse cx="0" cy="0" rx="15" ry="9" fill="none" stroke="blue" stroke-width="0.2" opacity="0.4"/></svg>
-        <svg class="orbit-debug orbit-anchor-3" viewBox="-18 -8 36 16" style="width:36vw;height:16vw"><ellipse cx="0" cy="0" rx="18" ry="8" fill="none" stroke="green" stroke-width="0.2" opacity="0.4"/></svg>
-        <svg class="orbit-debug orbit-anchor-4" viewBox="-10 -6 20 12" style="width:20vw;height:12vw"><ellipse cx="0" cy="0" rx="10" ry="6" fill="none" stroke="orange" stroke-width="0.2" opacity="0.4"/></svg>
+        <svg class="orbit-debug orbit-anchor-1" viewBox="-14 -8 28 16" style="width:28vw;height:16vw"><ellipse cx="0" cy="0" rx="14" ry="8" fill="none" stroke="red" stroke-width="0.15" opacity="0.4"/></svg>
+        <svg class="orbit-debug orbit-anchor-2" viewBox="-17 -10 34 20" style="width:34vw;height:20vw"><ellipse cx="0" cy="0" rx="17" ry="10" fill="none" stroke="blue" stroke-width="0.15" opacity="0.4"/></svg>
+        <svg class="orbit-debug orbit-anchor-3" viewBox="-20 -12 40 24" style="width:40vw;height:24vw"><ellipse cx="0" cy="0" rx="20" ry="12" fill="none" stroke="green" stroke-width="0.15" opacity="0.4"/></svg>
+        <svg class="orbit-debug orbit-anchor-4" viewBox="-23 -14 46 28" style="width:46vw;height:28vw"><ellipse cx="0" cy="0" rx="23" ry="14" fill="none" stroke="orange" stroke-width="0.15" opacity="0.4"/></svg>
 
         <div class="orbit-anchor orbit-anchor-1">
           <div class="orbit-x ox-1">
@@ -190,16 +190,16 @@ const currentSection = computed(() => {
   left: 50%;
 }
 
-.orbit-anchor-1 { transform: rotate(15deg); }
-.orbit-anchor-2 { transform: rotate(-10deg); }
-.orbit-anchor-3 { transform: rotate(30deg); }
-.orbit-anchor-4 { transform: rotate(-20deg); }
+.orbit-anchor-1,
+.orbit-anchor-2,
+.orbit-anchor-3,
+.orbit-anchor-4 { transform: rotate(-10deg); }
 
 /* Debug ellipses need translate to center on the anchor point */
-svg.orbit-anchor-1 { transform: translate(-50%, -50%) rotate(15deg); }
-svg.orbit-anchor-2 { transform: translate(-50%, -50%) rotate(-10deg); }
-svg.orbit-anchor-3 { transform: translate(-50%, -50%) rotate(30deg); }
-svg.orbit-anchor-4 { transform: translate(-50%, -50%) rotate(-20deg); }
+svg.orbit-anchor-1,
+svg.orbit-anchor-2,
+svg.orbit-anchor-3,
+svg.orbit-anchor-4 { transform: translate(-50%, -50%) rotate(-10deg); }
 
 .small-planet {
   width: 12px;
@@ -220,72 +220,56 @@ svg.orbit-anchor-4 { transform: translate(-50%, -50%) rotate(-20deg); }
   Sine (Y): zero → extreme → zero, opposite easing
 */
 
-/* --- Orbit 1: rx=12vw, ry=7vw, 8s --- */
-.ox-1 { animation: cos-12 8s infinite; animation-delay: -2s; }
-.oy-1 { animation: sin-7 8s infinite; animation-delay: -2s; }
+/* --- Orbit 1: rx=14vw, ry=8vw, 8s --- */
+.ox-1 { animation: cos-14 8s infinite; animation-delay: -2s; }
+.oy-1 { animation: sin-8 8s infinite; animation-delay: -2s; }
 
-/* --- Orbit 2: rx=15vw, ry=9vw, 12s --- */
-.ox-2 { animation: cos-15 12s infinite; animation-delay: -9s; }
-.oy-2 { animation: sin-9 12s infinite; animation-delay: -9s; }
+/* --- Orbit 2: rx=17vw, ry=10vw, 12s --- */
+.ox-2 { animation: cos-17 12s infinite; animation-delay: -9s; }
+.oy-2 { animation: sin-10 12s infinite; animation-delay: -9s; }
 
-/* --- Orbit 3: rx=18vw, ry=8vw, 15s --- */
-.ox-3 { animation: cos-18 15s infinite; animation-delay: -4s; }
-.oy-3 { animation: sin-8 15s infinite; animation-delay: -4s; }
+/* --- Orbit 3: rx=20vw, ry=12vw, 15s --- */
+.ox-3 { animation: cos-20 15s infinite; animation-delay: -4s; }
+.oy-3 { animation: sin-12 15s infinite; animation-delay: -4s; }
 
-/* --- Orbit 4: rx=10vw, ry=6vw, 10s --- */
-.ox-4 { animation: cos-10 10s infinite; animation-delay: -7s; }
-.oy-4 { animation: sin-6 10s infinite; animation-delay: -7s; }
+/* --- Orbit 4: rx=23vw, ry=14vw, 10s --- */
+.ox-4 { animation: cos-23 10s infinite; animation-delay: -7s; }
+.oy-4 { animation: sin-14 10s infinite; animation-delay: -7s; }
 
-/* Cosine: starts at +A (extreme), slows at extremes, fast at zero crossings */
-@keyframes cos-12 {
-  0%   { transform: translateX(12vw);  animation-timing-function: ease-in; }
+/* Cosine keyframes */
+@keyframes cos-14 {
+  0%   { transform: translateX(14vw);  animation-timing-function: ease-in; }
   25%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  50%  { transform: translateX(-12vw); animation-timing-function: ease-in; }
+  50%  { transform: translateX(-14vw); animation-timing-function: ease-in; }
   75%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  100% { transform: translateX(12vw); }
+  100% { transform: translateX(14vw); }
 }
 
-@keyframes cos-15 {
-  0%   { transform: translateX(15vw);  animation-timing-function: ease-in; }
+@keyframes cos-17 {
+  0%   { transform: translateX(17vw);  animation-timing-function: ease-in; }
   25%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  50%  { transform: translateX(-15vw); animation-timing-function: ease-in; }
+  50%  { transform: translateX(-17vw); animation-timing-function: ease-in; }
   75%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  100% { transform: translateX(15vw); }
+  100% { transform: translateX(17vw); }
 }
 
-@keyframes cos-18 {
-  0%   { transform: translateX(18vw);  animation-timing-function: ease-in; }
+@keyframes cos-20 {
+  0%   { transform: translateX(20vw);  animation-timing-function: ease-in; }
   25%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  50%  { transform: translateX(-18vw); animation-timing-function: ease-in; }
+  50%  { transform: translateX(-20vw); animation-timing-function: ease-in; }
   75%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  100% { transform: translateX(18vw); }
+  100% { transform: translateX(20vw); }
 }
 
-@keyframes cos-10 {
-  0%   { transform: translateX(10vw);  animation-timing-function: ease-in; }
+@keyframes cos-23 {
+  0%   { transform: translateX(23vw);  animation-timing-function: ease-in; }
   25%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  50%  { transform: translateX(-10vw); animation-timing-function: ease-in; }
+  50%  { transform: translateX(-23vw); animation-timing-function: ease-in; }
   75%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  100% { transform: translateX(10vw); }
+  100% { transform: translateX(23vw); }
 }
 
-/* Sine: starts at 0 (zero crossing), fast at zero, slow at extremes */
-@keyframes sin-7 {
-  0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  25%  { transform: translateY(-7vw);  animation-timing-function: ease-in; }
-  50%  { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  75%  { transform: translateY(7vw);   animation-timing-function: ease-in; }
-  100% { transform: translateY(0vw); }
-}
-
-@keyframes sin-9 {
-  0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  25%  { transform: translateY(-9vw);  animation-timing-function: ease-in; }
-  50%  { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  75%  { transform: translateY(9vw);   animation-timing-function: ease-in; }
-  100% { transform: translateY(0vw); }
-}
-
+/* Sine keyframes */
 @keyframes sin-8 {
   0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
   25%  { transform: translateY(-8vw);  animation-timing-function: ease-in; }
@@ -294,11 +278,27 @@ svg.orbit-anchor-4 { transform: translate(-50%, -50%) rotate(-20deg); }
   100% { transform: translateY(0vw); }
 }
 
-@keyframes sin-6 {
+@keyframes sin-10 {
   0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  25%  { transform: translateY(-6vw);  animation-timing-function: ease-in; }
+  25%  { transform: translateY(-10vw); animation-timing-function: ease-in; }
   50%  { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  75%  { transform: translateY(6vw);   animation-timing-function: ease-in; }
+  75%  { transform: translateY(10vw);  animation-timing-function: ease-in; }
+  100% { transform: translateY(0vw); }
+}
+
+@keyframes sin-12 {
+  0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
+  25%  { transform: translateY(-12vw); animation-timing-function: ease-in; }
+  50%  { transform: translateY(0vw);   animation-timing-function: ease-out; }
+  75%  { transform: translateY(12vw);  animation-timing-function: ease-in; }
+  100% { transform: translateY(0vw); }
+}
+
+@keyframes sin-14 {
+  0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
+  25%  { transform: translateY(-14vw); animation-timing-function: ease-in; }
+  50%  { transform: translateY(0vw);   animation-timing-function: ease-out; }
+  75%  { transform: translateY(14vw);  animation-timing-function: ease-in; }
   100% { transform: translateY(0vw); }
 }
 </style>
