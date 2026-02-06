@@ -9,6 +9,28 @@ const currentSection = computed(() => {
   if (route.path.startsWith('/about')) return 'about'
   return 'home'
 })
+
+// --- Orbit config ---
+const orbitTilt = -10        // deg, shared tilt for all orbits
+const orbitBaseRx = 12       // vw, smallest orbit X radius
+const orbitBaseRy = 5        // vw, smallest orbit Y radius
+const orbitGapRx = 4         // vw, X radius increment per orbit
+const orbitGapRy = 2         // vw, Y radius increment per orbit
+
+const orbits = [
+  { duration: 8,  delay: -2, big: false },
+  { duration: 12, delay: -9, big: true },
+  { duration: 15, delay: -4, big: false },
+  { duration: 10, delay: -7, big: true },
+]
+
+const orbitData = computed(() =>
+  orbits.map((o, i) => ({
+    ...o,
+    rx: orbitBaseRx + orbitGapRx * i,
+    ry: orbitBaseRy + orbitGapRy * i,
+  }))
+)
 </script>
 
 <template>
@@ -44,38 +66,46 @@ const currentSection = computed(() => {
           </svg>
         </div>
 
-        <!-- Orbiting Planets (X/Y split animation for fixed elliptical paths) -->
-        <!-- Debug: orbit path ellipses -->
-        <svg class="orbit-debug orbit-anchor-1" viewBox="-14 -8 28 16" style="width:28vw;height:16vw"><ellipse cx="0" cy="0" rx="14" ry="8" fill="none" stroke="red" stroke-width="0.15" opacity="0.4"/></svg>
-        <svg class="orbit-debug orbit-anchor-2" viewBox="-17 -10 34 20" style="width:34vw;height:20vw"><ellipse cx="0" cy="0" rx="17" ry="10" fill="none" stroke="blue" stroke-width="0.15" opacity="0.4"/></svg>
-        <svg class="orbit-debug orbit-anchor-3" viewBox="-20 -12 40 24" style="width:40vw;height:24vw"><ellipse cx="0" cy="0" rx="20" ry="12" fill="none" stroke="green" stroke-width="0.15" opacity="0.4"/></svg>
-        <svg class="orbit-debug orbit-anchor-4" viewBox="-23 -14 46 28" style="width:46vw;height:28vw"><ellipse cx="0" cy="0" rx="23" ry="14" fill="none" stroke="orange" stroke-width="0.15" opacity="0.4"/></svg>
+        <!-- Orbiting Planets -->
+        <!-- Debug ellipses -->
+        <svg
+          v-for="(o, i) in orbitData"
+          :key="'debug-' + i"
+          class="orbit-debug"
+          :style="{
+            width: o.rx * 2 + 'vw',
+            height: o.ry * 2 + 'vw',
+            transform: `translate(-50%, -50%) rotate(${orbitTilt}deg)`,
+          }"
+          :viewBox="`${-o.rx} ${-o.ry} ${o.rx * 2} ${o.ry * 2}`"
+        >
+          <!-- <ellipse cx="0" cy="0" :rx="o.rx" :ry="o.ry" fill="none" stroke="rgba(0, 0, 0, 0.1)" stroke-width="0.15" opacity="0.4" /> -->
+        </svg>
 
-        <div class="orbit-anchor orbit-anchor-1">
-          <div class="orbit-x ox-1">
-            <div class="orbit-y oy-1">
-              <div class="small-planet"></div>
-            </div>
-          </div>
-        </div>
-        <div class="orbit-anchor orbit-anchor-2">
-          <div class="orbit-x ox-2">
-            <div class="orbit-y oy-2">
-              <div class="small-planet big"></div>
-            </div>
-          </div>
-        </div>
-        <div class="orbit-anchor orbit-anchor-3">
-          <div class="orbit-x ox-3">
-            <div class="orbit-y oy-3">
-              <div class="small-planet"></div>
-            </div>
-          </div>
-        </div>
-        <div class="orbit-anchor orbit-anchor-4">
-          <div class="orbit-x ox-4">
-            <div class="orbit-y oy-4">
-              <div class="small-planet big"></div>
+        <!-- Orbit planets -->
+        <div
+          v-for="(o, i) in orbitData"
+          :key="'orbit-' + i"
+          class="orbit-anchor"
+          :style="{ transform: `rotate(${orbitTilt}deg)` }"
+        >
+          <div
+            class="orbit-x"
+            :style="{
+              '--rx': o.rx + 'vw',
+              animationDuration: o.duration + 's',
+              animationDelay: o.delay + 's',
+            }"
+          >
+            <div
+              class="orbit-y"
+              :style="{
+                '--ry': o.ry + 'vw',
+                animationDuration: o.duration + 's',
+                animationDelay: o.delay + 's',
+              }"
+            >
+              <div class="small-planet" :class="{ big: o.big }"></div>
             </div>
           </div>
         </div>
@@ -167,16 +197,10 @@ const currentSection = computed(() => {
 <style scoped>
 /*
   Elliptical orbits using split X/Y animations.
-  - orbit-anchor: positioned at planet center, applies tilt rotation
-  - orbit-x: animates translateX (cosine motion)
-  - orbit-y: animates translateY (sine motion, 90° phase offset)
-  - Different X/Y amplitudes = ellipse. Dot stays perfectly round.
-
-  Sine approximation with 12 keyframe steps for smooth motion.
-  Amplitudes are in vw units relative to the planet container.
+  Amplitudes come from CSS custom properties --rx and --ry set per element.
+  Only 2 keyframe definitions needed.
 */
 
-/* Anchor at planet center, tilted */
 .orbit-debug {
   position: absolute;
   top: 0%;
@@ -190,23 +214,13 @@ const currentSection = computed(() => {
   left: 50%;
 }
 
-.orbit-anchor-1,
-.orbit-anchor-2,
-.orbit-anchor-3,
-.orbit-anchor-4 { transform: rotate(-10deg); }
-
-/* Debug ellipses need translate to center on the anchor point */
-svg.orbit-anchor-1,
-svg.orbit-anchor-2,
-svg.orbit-anchor-3,
-svg.orbit-anchor-4 { transform: translate(-50%, -50%) rotate(-10deg); }
-
 .small-planet {
   width: 12px;
   height: 12px;
   background-color: #000;
   border-radius: 50%;
   transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
 }
 
 .small-planet.big {
@@ -214,91 +228,24 @@ svg.orbit-anchor-4 { transform: translate(-50%, -50%) rotate(-10deg); }
   height: 24px;
 }
 
-/*
-  Cosine (X): extreme → zero → extreme, per-segment easing:
-    At extremes velocity=0 (ease-in to leave, ease-out to arrive)
-  Sine (Y): zero → extreme → zero, opposite easing
-*/
+.orbit-x { animation: ellipse-x infinite; }
+.orbit-y { animation: ellipse-y infinite; }
 
-/* --- Orbit 1: rx=14vw, ry=8vw, 8s --- */
-.ox-1 { animation: cos-14 8s infinite; animation-delay: -2s; }
-.oy-1 { animation: sin-8 8s infinite; animation-delay: -2s; }
-
-/* --- Orbit 2: rx=17vw, ry=10vw, 12s --- */
-.ox-2 { animation: cos-17 12s infinite; animation-delay: -9s; }
-.oy-2 { animation: sin-10 12s infinite; animation-delay: -9s; }
-
-/* --- Orbit 3: rx=20vw, ry=12vw, 15s --- */
-.ox-3 { animation: cos-20 15s infinite; animation-delay: -4s; }
-.oy-3 { animation: sin-12 15s infinite; animation-delay: -4s; }
-
-/* --- Orbit 4: rx=23vw, ry=14vw, 10s --- */
-.ox-4 { animation: cos-23 10s infinite; animation-delay: -7s; }
-.oy-4 { animation: sin-14 10s infinite; animation-delay: -7s; }
-
-/* Cosine keyframes */
-@keyframes cos-14 {
-  0%   { transform: translateX(14vw);  animation-timing-function: ease-in; }
-  25%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  50%  { transform: translateX(-14vw); animation-timing-function: ease-in; }
-  75%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  100% { transform: translateX(14vw); }
+/* Cosine (X): slow at extremes, fast at zero crossings */
+@keyframes ellipse-x {
+  0%   { transform: translateX(var(--rx));                animation-timing-function: ease-in; }
+  25%  { transform: translateX(0);                        animation-timing-function: ease-out; }
+  50%  { transform: translateX(calc(var(--rx) * -1));     animation-timing-function: ease-in; }
+  75%  { transform: translateX(0);                        animation-timing-function: ease-out; }
+  100% { transform: translateX(var(--rx)); }
 }
 
-@keyframes cos-17 {
-  0%   { transform: translateX(17vw);  animation-timing-function: ease-in; }
-  25%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  50%  { transform: translateX(-17vw); animation-timing-function: ease-in; }
-  75%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  100% { transform: translateX(17vw); }
-}
-
-@keyframes cos-20 {
-  0%   { transform: translateX(20vw);  animation-timing-function: ease-in; }
-  25%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  50%  { transform: translateX(-20vw); animation-timing-function: ease-in; }
-  75%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  100% { transform: translateX(20vw); }
-}
-
-@keyframes cos-23 {
-  0%   { transform: translateX(23vw);  animation-timing-function: ease-in; }
-  25%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  50%  { transform: translateX(-23vw); animation-timing-function: ease-in; }
-  75%  { transform: translateX(0vw);   animation-timing-function: ease-out; }
-  100% { transform: translateX(23vw); }
-}
-
-/* Sine keyframes */
-@keyframes sin-8 {
-  0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  25%  { transform: translateY(-8vw);  animation-timing-function: ease-in; }
-  50%  { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  75%  { transform: translateY(8vw);   animation-timing-function: ease-in; }
-  100% { transform: translateY(0vw); }
-}
-
-@keyframes sin-10 {
-  0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  25%  { transform: translateY(-10vw); animation-timing-function: ease-in; }
-  50%  { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  75%  { transform: translateY(10vw);  animation-timing-function: ease-in; }
-  100% { transform: translateY(0vw); }
-}
-
-@keyframes sin-12 {
-  0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  25%  { transform: translateY(-12vw); animation-timing-function: ease-in; }
-  50%  { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  75%  { transform: translateY(12vw);  animation-timing-function: ease-in; }
-  100% { transform: translateY(0vw); }
-}
-
-@keyframes sin-14 {
-  0%   { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  25%  { transform: translateY(-14vw); animation-timing-function: ease-in; }
-  50%  { transform: translateY(0vw);   animation-timing-function: ease-out; }
-  75%  { transform: translateY(14vw);  animation-timing-function: ease-in; }
-  100% { transform: translateY(0vw); }
+/* Sine (Y): fast at zero crossings, slow at extremes */
+@keyframes ellipse-y {
+  0%   { transform: translateY(0);                        animation-timing-function: ease-out; }
+  25%  { transform: translateY(calc(var(--ry) * -1));     animation-timing-function: ease-in; }
+  50%  { transform: translateY(0);                        animation-timing-function: ease-out; }
+  75%  { transform: translateY(var(--ry));                animation-timing-function: ease-in; }
+  100% { transform: translateY(0); }
 }
 </style>
