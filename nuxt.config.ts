@@ -6,6 +6,8 @@ export default defineNuxtConfig({
   ],
   devtools: { enabled: true },
   compatibilityDate: '2024-04-03',
+  ssr: false,
+  target: 'static',
   app: {
     head: {
       link: [

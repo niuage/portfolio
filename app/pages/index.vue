@@ -20,7 +20,14 @@ const projects = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-[#e8e4db] relative">
+  <!-- lg:p-3 -->
+  <div class="min-h-screen  relative">
+    <!-- Planet (centered, outside border) -->
+    <div class="absolute left-1/2 -translate-x-1/2 top-0 w-full max-w-[32rem] px-4 z-10">
+      <img src="/planet.png" alt="Planet" class="w-full object-contain drop-shadow-[0_0_80px_rgba(255,255,255,0.5)]" />
+    </div>
+
+    <div class="min-h-screen bg-[#e8e4db] rounded-xl relative overflow-hidden">
     <!-- Fixed Bottom Menu (Desktop) -->
     <div class="hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-8 flex-row gap-4 bg-black rounded-full px-6 py-3 z-50">
       <button class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform">
@@ -64,24 +71,19 @@ const projects = [
           <img src="/logo.svg" alt="nüage" class="h-12" />
         </div>
 
-        <!-- Planet (centered) -->
-        <div class="absolute left-1/2 -translate-x-1/2 top-0 w-full max-w-[32rem] px-4">
-          <img src="/planet.png" alt="Planet" class="w-full object-contain drop-shadow-[0_0_80px_rgba(255,255,255,0.5)]" />
-        </div>
-
         <!-- Navigation Icons -->
         <nav class="flex items-center gap-6 relative z-10">
-          <button class="hover:scale-110 transition-transform">
-            <img src="/icon_work.svg" alt="Work" class="w-6 h-6" />
-          </button>
           <button class="hover:scale-110 transition-transform">
             <img src="/icon_home.svg" alt="Home" class="w-6 h-6" />
           </button>
           <button class="hover:scale-110 transition-transform">
-            <img src="/icon_about.svg" alt="About" class="w-6 h-6" />
+            <img src="/icon_work.svg" alt="Work" class="w-6 h-6" />
           </button>
           <button class="hover:scale-110 transition-transform">
             <img src="/icon_notebook.svg" alt="Notebook" class="w-6 h-6" />
+          </button>
+          <button class="hover:scale-110 transition-transform">
+            <img src="/icon_about.svg" alt="About" class="w-6 h-6" />
           </button>
         </nav>
       </header>
@@ -120,6 +122,7 @@ const projects = [
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
