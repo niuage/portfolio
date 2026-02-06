@@ -1,0 +1,19 @@
+{
+  "name": "nuxt-content-starter",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.11.0",
+    "better-sqlite3": "^12.6.2",
+    "nuxt": "^4.3.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.14.0"
+  }
+}
