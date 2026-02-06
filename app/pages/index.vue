@@ -27,7 +27,23 @@ const projects = [
   <div class="min-h-screen  relative">
     <!-- Planet (centered, outside border) -->
     <div class="absolute left-1/2 -translate-x-1/2 top-0 w-full max-w-[32rem] px-4 z-10">
-      <img :src="`${baseURL}planet.png`" alt="Planet" class="w-full object-contain drop-shadow-[0_0_80px_rgba(255,255,255,0.5)]" />
+      <div class="relative">
+        <img :src="`${baseURL}planet.png`" alt="Planet" class="w-full object-contain" />
+
+        <!-- Orbiting Planets -->
+        <div class="orbit-container orbit-1">
+          <div class="small-planet"></div>
+        </div>
+        <div class="orbit-container orbit-2">
+          <div class="small-planet"></div>
+        </div>
+        <div class="orbit-container orbit-3">
+          <div class="small-planet"></div>
+        </div>
+        <div class="orbit-container orbit-4">
+          <div class="small-planet"></div>
+        </div>
+      </div>
     </div>
 
     <div class="min-h-screen bg-[#e8e4db] rounded-xl relative overflow-hidden">
@@ -75,7 +91,7 @@ const projects = [
         </div>
 
         <!-- Navigation Icons -->
-        <nav class="flex items-center gap-6 relative z-10">
+        <nav class="flex items-center gap-10 relative z-10">
           <button class="hover:scale-110 transition-transform">
             <img :src="`${baseURL}icon_home.svg`" alt="Home" class="w-6 h-6" />
           </button>
@@ -92,7 +108,7 @@ const projects = [
       </header>
 
       <!-- Projects Grid -->
-      <div class="space-y-12 pb-24 lg:pb-12">
+      <div class="space-y-20 pb-24 lg:pb-12">
         <div
           v-for="project in projects"
           :key="project.id"
@@ -129,3 +145,69 @@ const projects = [
     </div>
   </div>
 </template>
+
+<style scoped>
+/* Orbiting planets styles */
+.orbit-container {
+  position: absolute;
+  top: 0%;  /* Planet center is at the top since half is hidden above */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.orbit-1 {
+  width: 170%;
+  height: 170%;
+  animation: orbit 8s linear infinite;
+}
+
+.orbit-2 {
+  width: 220%;
+  height: 220%;
+  animation: orbit 12s linear infinite;
+  animation-delay: -3s;
+}
+
+.orbit-3 {
+  width: 250%;
+  height: 250%;
+  animation: orbit 15s linear infinite;
+  animation-delay: -6s;
+}
+
+.orbit-4 {
+  width: 180%;
+  height: 180%;
+  animation: orbit 10s linear infinite;
+  animation-delay: -2s;
+}
+
+.small-planet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: #000;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* Make some planets bigger */
+.orbit-2 .small-planet,
+.orbit-4 .small-planet {
+  width: 24px;
+  height: 24px;
+}
+
+@keyframes orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+</style>
