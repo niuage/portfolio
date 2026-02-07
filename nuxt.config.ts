@@ -1,5 +1,32 @@
+import svgLoader from 'vite-svg-loader'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  vite: {
+    plugins: [
+      svgLoader({
+        defaultImport: 'component',
+        svgoConfig: {
+          plugins: [
+            {
+              name: 'preset-default',
+              params: {
+                overrides: {
+                  removeViewBox: false,
+                },
+              },
+            },
+            {
+              name: 'convertColors',
+              params: {
+                currentColor: true,
+              },
+            },
+          ],
+        },
+      }),
+    ],
+  },
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',

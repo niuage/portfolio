@@ -31,6 +31,42 @@ const orbitData = computed(() =>
     ry: orbitBaseRy + orbitGapRy * i,
   }))
 )
+
+// --- Menu glow ---
+const menuRef = ref<HTMLElement | null>(null)
+const menuGlowX = ref(0)
+const menuGlowY = ref(0)
+const menuGlowVisible = ref(false)
+
+function onMenuMouseMove(e: MouseEvent) {
+  if (!menuRef.value) return
+  const rect = menuRef.value.getBoundingClientRect()
+  menuGlowX.value = e.clientX - rect.left
+  menuGlowY.value = e.clientY - rect.top
+  menuGlowVisible.value = true
+}
+
+function onMenuMouseLeave() {
+  menuGlowVisible.value = false
+}
+
+// --- Nav glow ---
+const navRef = ref<HTMLElement | null>(null)
+const navGlowX = ref(0)
+const navGlowY = ref(0)
+const navGlowVisible = ref(false)
+
+function onNavMouseMove(e: MouseEvent) {
+  if (!navRef.value) return
+  const rect = navRef.value.getBoundingClientRect()
+  navGlowX.value = e.clientX - rect.left
+  navGlowY.value = e.clientY - rect.top
+  navGlowVisible.value = true
+}
+
+function onNavMouseLeave() {
+  navGlowVisible.value = false
+}
 </script>
 
 <template>
@@ -119,7 +155,7 @@ const orbitData = computed(() =>
               :style="{
                 '--rx': o.rx + 'vw',
                 animationDuration: o.duration + 's',
-                animationDelay: (o.delay + o.duration / 2) + 's',
+                animationDelay: (o.delay - o.duration / 2) + 's',
               }"
             >
               <div
@@ -127,7 +163,7 @@ const orbitData = computed(() =>
                 :style="{
                   '--ry': o.ry + 'vw',
                   animationDuration: o.duration + 's',
-                  animationDelay: (o.delay + o.duration / 2) + 's',
+                  animationDelay: (o.delay - o.duration / 2) + 's',
                 }"
               >
                 <div class="small-planet" :class="{ big: o.big }"></div>
@@ -140,25 +176,35 @@ const orbitData = computed(() =>
 
     <div class="min-h-screen bg-[#f3ebda] rounded-xl relative overflow-hidden">
       <!-- Fixed Bottom Menu (Desktop) -->
-      <div class="hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-8 flex-row gap-4 bg-[var(--accent-dark)] rounded-full px-6 py-2 z-50">
-        <NuxtLink to="/work" class="w-12 h-12 flex items-center justify-center text-white hover:scale-110 transition-transform" :class="{ 'opacity-50': route.path !== '/work' }">
-          <svg class="w-6 h-6" viewBox="0 0 42 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 29.0062L29 12.0062M18 3.50623C28.9639 3.23213 38 12.0451 38 23.0125V23.5062" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
-            <circle cx="3.5" cy="36.5062" r="3.5" fill="currentColor"/>
-          </svg>
+      <div
+        ref="menuRef"
+        class="hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-8 flex-row gap-4 bg-[var(--accent-dark)] rounded-full px-6 py-2 z-50 overflow-hidden"
+        @mousemove="onMenuMouseMove"
+        @mouseleave="onMenuMouseLeave"
+      >
+        <div
+          class="menu-glow"
+          :style="{
+            left: menuGlowX + 'px',
+            top: menuGlowY + 'px',
+            opacity: menuGlowVisible ? 'var(--menu-glow-opacity)' : 0,
+          }"
+        ></div>
+        <NuxtLink to="/work" class="menu-icon" :class="{ 'menu-icon-active': route.path === '/work' }">
+          <Icon name="work" />
         </NuxtLink>
         <div class="w-px bg-white/20 my-2"></div>
-        <NuxtLink to="/work/games" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform" :class="{ 'opacity-50': route.path !== '/work/games' }">
-          <img :src="`${baseURL}icon_games.svg`" alt="Games" class="w-6 h-6" />
+        <NuxtLink to="/work/games" class="menu-icon" :class="{ 'menu-icon-active': route.path === '/work/games' }">
+          <Icon name="games" />
         </NuxtLink>
-        <NuxtLink to="/work/web" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform" :class="{ 'opacity-50': route.path !== '/work/web' }">
-          <img :src="`${baseURL}icon_web.svg`" alt="Web" class="w-6 h-6" />
+        <NuxtLink to="/work/web" class="menu-icon" :class="{ 'menu-icon-active': route.path === '/work/web' }">
+          <Icon name="web" />
         </NuxtLink>
-        <NuxtLink to="/work/illustration" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform" :class="{ 'opacity-50': route.path !== '/work/illustration' }">
-          <img :src="`${baseURL}icon_illustration.svg`" alt="Illustration" class="w-6 h-6" />
+        <NuxtLink to="/work/illustration" class="menu-icon" :class="{ 'menu-icon-active': route.path === '/work/illustration' }">
+          <Icon name="illustration" />
         </NuxtLink>
-        <NuxtLink to="/work/3d" class="w-12 h-12 flex items-center justify-center hover:scale-110 transition-transform" :class="{ 'opacity-50': route.path !== '/work/3d' }">
-          <img :src="`${baseURL}icon_3d.svg`" alt="3D" class="w-6 h-6" />
+        <NuxtLink to="/work/3d" class="menu-icon" :class="{ 'menu-icon-active': route.path === '/work/3d' }">
+          <Icon name="3d" />
         </NuxtLink>
       </div>
 
@@ -166,23 +212,20 @@ const orbitData = computed(() =>
       <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-[var(--accent-dark)] backdrop-blur-sm z-50">
         <div class="flex justify-around items-center px-4 py-3">
           <NuxtLink to="/work" class="w-12 h-12 flex items-center justify-center text-white" :class="{ 'opacity-50': route.path !== '/work' }">
-            <svg class="w-6 h-6" viewBox="0 0 42 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 29.0062L29 12.0062M18 3.50623C28.9639 3.23213 38 12.0451 38 23.0125V23.5062" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
-              <circle cx="3.5" cy="36.5062" r="3.5" fill="currentColor"/>
-            </svg>
+            <Icon name="work" />
           </NuxtLink>
           <div class="w-px h-8 bg-white/20"></div>
-          <NuxtLink to="/work/games" class="w-12 h-12 flex items-center justify-center" :class="{ 'opacity-50': route.path !== '/work/games' }">
-            <img :src="`${baseURL}icon_games.svg`" alt="Games" class="w-6 h-6" />
+          <NuxtLink to="/work/games" class="w-12 h-12 flex items-center justify-center text-white" :class="{ 'opacity-50': route.path !== '/work/games' }">
+            <Icon name="games" />
           </NuxtLink>
-          <NuxtLink to="/work/web" class="w-12 h-12 flex items-center justify-center" :class="{ 'opacity-50': route.path !== '/work/web' }">
-            <img :src="`${baseURL}icon_web.svg`" alt="Web" class="w-6 h-6" />
+          <NuxtLink to="/work/web" class="w-12 h-12 flex items-center justify-center text-white" :class="{ 'opacity-50': route.path !== '/work/web' }">
+            <Icon name="web" />
           </NuxtLink>
-          <NuxtLink to="/work/illustration" class="w-12 h-12 flex items-center justify-center" :class="{ 'opacity-50': route.path !== '/work/illustration' }">
-            <img :src="`${baseURL}icon_illustration.svg`" alt="Illustration" class="w-6 h-6" />
+          <NuxtLink to="/work/illustration" class="w-12 h-12 flex items-center justify-center text-white" :class="{ 'opacity-50': route.path !== '/work/illustration' }">
+            <Icon name="illustration" />
           </NuxtLink>
-          <NuxtLink to="/work/3d" class="w-12 h-12 flex items-center justify-center" :class="{ 'opacity-50': route.path !== '/work/3d' }">
-            <img :src="`${baseURL}icon_3d.svg`" alt="3D" class="w-6 h-6" />
+          <NuxtLink to="/work/3d" class="w-12 h-12 flex items-center justify-center text-white" :class="{ 'opacity-50': route.path !== '/work/3d' }">
+            <Icon name="3d" />
           </NuxtLink>
         </div>
       </div>
@@ -208,18 +251,31 @@ const orbitData = computed(() =>
           </NuxtLink>
 
           <!-- Navigation Icons -->
-          <nav class="flex items-center gap-10 relative z-10">
-            <NuxtLink to="/" class="hover:scale-110 transition-transform" :class="{ 'opacity-60': route.path !== '/' }">
-              <img :src="`${baseURL}icon_home.svg`" alt="Home" class="w-6 h-6" />
+          <nav
+            ref="navRef"
+            class="flex items-center gap-10 relative z-10 overflow-visible"
+            @mousemove="onNavMouseMove"
+            @mouseleave="onNavMouseLeave"
+          >
+            <div
+              class="nav-glow"
+              :style="{
+                left: navGlowX + 'px',
+                top: navGlowY + 'px',
+                opacity: navGlowVisible ? 'var(--nav-glow-opacity)' : 0,
+              }"
+            ></div>
+            <NuxtLink to="/" class="nav-icon" :class="{ 'nav-icon-active': route.path === '/' }">
+              <Icon name="home" />
             </NuxtLink>
-            <NuxtLink to="/work" class="hover:scale-110 transition-transform" :class="{ 'opacity-60': !route.path.startsWith('/work') }">
-              <img :src="`${baseURL}icon_work.svg`" alt="Work" class="w-6 h-6" />
+            <NuxtLink to="/work" class="nav-icon" :class="{ 'nav-icon-active': route.path.startsWith('/work') }">
+              <Icon name="work" />
             </NuxtLink>
-            <NuxtLink to="/notebook" class="hover:scale-110 transition-transform" :class="{ 'opacity-60': route.path !== '/notebook' }">
-              <img :src="`${baseURL}icon_notebook.svg`" alt="Notebook" class="w-6 h-6" />
+            <NuxtLink to="/notebook" class="nav-icon" :class="{ 'nav-icon-active': route.path === '/notebook' }">
+              <Icon name="notebook" />
             </NuxtLink>
-            <NuxtLink to="/about" class="hover:scale-110 transition-transform" :class="{ 'opacity-60': route.path !== '/about' }">
-              <img :src="`${baseURL}icon_about.svg`" alt="About" class="w-6 h-6" />
+            <NuxtLink to="/about" class="nav-icon" :class="{ 'nav-icon-active': route.path === '/about' }">
+              <Icon name="about" />
             </NuxtLink>
           </nav>
         </header>
@@ -232,6 +288,59 @@ const orbitData = computed(() =>
 </template>
 
 <style scoped>
+.nav-icon {
+  color: black;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.nav-icon:hover {
+  transform: scale(1.1);
+}
+
+.nav-icon-active {
+  color: var(--accent);
+}
+
+.nav-glow {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: var(--nav-glow-size);
+  height: var(--nav-glow-size);
+  border-radius: 9999px;
+  background: var(--accent-super-light);
+  filter: blur(20px);
+  pointer-events: none;
+  transition: opacity var(--glow-fade-duration);
+}
+
+.menu-icon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.menu-icon:hover,
+.menu-icon-active {
+  transform: scale(1.1);
+  color: white;
+}
+
+.menu-glow {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 9999px;
+  background: var(--accent-super-light);
+  filter: blur(40px);
+  pointer-events: none;
+  transition: opacity var(--glow-fade-duration);
+}
+
 .logo-glow {
   position: absolute;
   top: -90px;

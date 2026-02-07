@@ -10,7 +10,7 @@ const projects = [
     category: 'games',
     description: 'A realistic fluid dynamics system for Unity. Features wave propagation, buoyancy physics, and dynamic reflections. Built with compute shaders for optimal performance in 2D games.',
     thumbnail: `${baseURL}project_1_thumbnail.png`,
-    icon: `${baseURL}icon_games.svg`
+    icon: 'games'
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const projects = [
     category: 'illustration',
     description: 'Brand identity exploration combining organic forms with modern minimalism. The design reflects themes of nature and technology through simple geometric shapes.',
     thumbnail: `${baseURL}project_2_thumbnail.png`,
-    icon: `${baseURL}icon_illustration.svg`
+    icon: 'illustration'
   }
 ]
 </script>
@@ -35,8 +35,8 @@ const projects = [
         class="flex items-start gap-6"
       >
         <!-- Project Icon -->
-        <div class="hidden sm:flex flex-shrink-0 w-14 h-14 bg-[var(--accent-dark)] rounded-2xl items-center justify-center">
-          <img :src="project.icon" :alt="project.title" class="w-7 h-7" />
+        <div class="hidden sm:flex flex-shrink-0 w-14 h-14 bg-[var(--accent-dark)] rounded-2xl items-center justify-center text-white">
+          <Icon :name="project.icon" />
         </div>
 
         <!-- Project Card -->
