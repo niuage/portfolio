@@ -14,6 +14,7 @@
   --accent-dark: hwb(from var(--accent) h w 85%);
   --accent-light: hwb(from var(--accent) h w 60%);
   --accent-super-light: hwb(from var(--accent) h w 16%);
+  --accent-nav-active: hwb(from var(--accent) h w 70%);
 
   --accent-small-planet: hwb(from var(--accent) h w 50%);
   --planet-falloff: 70%;
@@ -27,6 +28,13 @@
   --planet-ring-outer: var(--bg);
   --planet-shadow-opacity: 0%;
   --planet-icon-top: 17%;
+  --orbit-scale: 1.4;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --orbit-scale: 1.1;
+  }
 }
 
 body {

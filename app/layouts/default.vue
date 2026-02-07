@@ -301,7 +301,7 @@ function onNavMouseLeave() {
 }
 
 .nav-icon-active {
-  color: var(--accent-light);
+  color: var(--accent-nav-active);
 }
 
 .nav-glow {
@@ -430,19 +430,19 @@ function onNavMouseLeave() {
 
 /* Cosine (X): slow at extremes, fast at zero crossings */
 @keyframes ellipse-x {
-  0%   { transform: translateX(var(--rx));                animation-timing-function: ease-in; }
-  25%  { transform: translateX(0);                        animation-timing-function: ease-out; }
-  50%  { transform: translateX(calc(var(--rx) * -1));     animation-timing-function: ease-in; }
-  75%  { transform: translateX(0);                        animation-timing-function: ease-out; }
-  100% { transform: translateX(var(--rx)); }
+  0%   { transform: translateX(calc(var(--rx) * var(--orbit-scale)));          animation-timing-function: ease-in; }
+  25%  { transform: translateX(0);                                             animation-timing-function: ease-out; }
+  50%  { transform: translateX(calc(var(--rx) * var(--orbit-scale) * -1));     animation-timing-function: ease-in; }
+  75%  { transform: translateX(0);                                             animation-timing-function: ease-out; }
+  100% { transform: translateX(calc(var(--rx) * var(--orbit-scale))); }
 }
 
 /* Sine (Y): fast at zero crossings, slow at extremes */
 @keyframes ellipse-y {
-  0%   { transform: translateY(0);                        animation-timing-function: ease-out; }
-  25%  { transform: translateY(calc(var(--ry) * -1));     animation-timing-function: ease-in; }
-  50%  { transform: translateY(0);                        animation-timing-function: ease-out; }
-  75%  { transform: translateY(var(--ry));                animation-timing-function: ease-in; }
+  0%   { transform: translateY(0);                                             animation-timing-function: ease-out; }
+  25%  { transform: translateY(calc(var(--ry) * var(--orbit-scale) * -1));     animation-timing-function: ease-in; }
+  50%  { transform: translateY(0);                                             animation-timing-function: ease-out; }
+  75%  { transform: translateY(calc(var(--ry) * var(--orbit-scale)));          animation-timing-function: ease-in; }
   100% { transform: translateY(0); }
 }
 </style>
