@@ -82,39 +82,65 @@ const orbitData = computed(() =>
           <!-- <ellipse cx="0" cy="0" :rx="o.rx" :ry="o.ry" fill="none" stroke="rgba(0, 0, 0, 0.1)" stroke-width="0.15" opacity="0.4" /> -->
         </svg>
 
-        <!-- Orbit planets -->
-        <div
-          v-for="(o, i) in orbitData"
-          :key="'orbit-' + i"
-          class="orbit-anchor"
-          :style="{ transform: `rotate(${orbitTilt}deg)` }"
-        >
+        <!-- Orbit planets (2 per ring, opposite sides) -->
+        <template v-for="(o, i) in orbitData" :key="'orbit-' + i">
+          <!-- Planet 1 -->
           <div
-            class="orbit-x"
-            :style="{
-              '--rx': o.rx + 'vw',
-              animationDuration: o.duration + 's',
-              animationDelay: o.delay + 's',
-            }"
+            class="orbit-anchor"
+            :style="{ transform: `rotate(${orbitTilt}deg)` }"
           >
             <div
-              class="orbit-y"
+              class="orbit-x"
               :style="{
-                '--ry': o.ry + 'vw',
+                '--rx': o.rx + 'vw',
                 animationDuration: o.duration + 's',
                 animationDelay: o.delay + 's',
               }"
             >
-              <div class="small-planet" :class="{ big: o.big }"></div>
+              <div
+                class="orbit-y"
+                :style="{
+                  '--ry': o.ry + 'vw',
+                  animationDuration: o.duration + 's',
+                  animationDelay: o.delay + 's',
+                }"
+              >
+                <div class="small-planet" :class="{ big: o.big }"></div>
+              </div>
             </div>
           </div>
-        </div>
+          <!-- Planet 2 (opposite side: delay offset by half the duration) -->
+          <div
+            class="orbit-anchor"
+            :style="{ transform: `rotate(${orbitTilt}deg)` }"
+          >
+            <div
+              class="orbit-x"
+              :style="{
+                '--rx': o.rx + 'vw',
+                animationDuration: o.duration + 's',
+                animationDelay: (o.delay + o.duration / 2) + 's',
+              }"
+            >
+              <div
+                class="orbit-y"
+                :style="{
+                  '--ry': o.ry + 'vw',
+                  animationDuration: o.duration + 's',
+                  animationDelay: (o.delay + o.duration / 2) + 's',
+                }"
+              >
+                <div class="small-planet" :class="{ big: o.big }"></div>
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
     </div>
 
-    <div class="min-h-screen bg-[#e8e4db] rounded-xl relative overflow-hidden">
+    <div class="min-h-screen bg-[#f3ebda] rounded-xl relative overflow-hidden">
       <!-- Fixed Bottom Menu (Desktop) -->
-      <div class="hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-8 flex-row gap-4 bg-black rounded-full px-6 py-3 z-50">
+      <div class="hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-8 flex-row gap-4 bg-[var(--accent-dark)] rounded-full px-6 py-2 z-50">
         <NuxtLink to="/work" class="w-12 h-12 flex items-center justify-center text-white hover:scale-110 transition-transform" :class="{ 'opacity-50': route.path !== '/work' }">
           <svg class="w-6 h-6" viewBox="0 0 42 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 29.0062L29 12.0062M18 3.50623C28.9639 3.23213 38 12.0451 38 23.0125V23.5062" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
@@ -137,7 +163,7 @@ const orbitData = computed(() =>
       </div>
 
       <!-- Mobile Bottom Navigation -->
-      <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm z-50">
+      <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-[var(--accent-dark)] backdrop-blur-sm z-50">
         <div class="flex justify-around items-center px-4 py-3">
           <NuxtLink to="/work" class="w-12 h-12 flex items-center justify-center text-white" :class="{ 'opacity-50': route.path !== '/work' }">
             <svg class="w-6 h-6" viewBox="0 0 42 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -166,8 +192,19 @@ const orbitData = computed(() =>
         <!-- Header with Planet -->
         <header class="relative pt-40 md:pt-12 pb-32 md:pb-64 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-0 md:justify-between">
           <!-- Logo -->
-          <NuxtLink to="/" class="relative z-10">
-            <img :src="`${baseURL}logo.svg`" alt="nüage" class="h-12" />
+          <NuxtLink to="/" class="relative z-10 text-[var(--accent)]">
+            <div class="logo-glow"></div>
+            <svg class="h-12 relative" viewBox="0 0 231 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M20 10C14.4772 10 10 14.4772 10 20V45C10 47.7614 7.76142 50 5 50C2.23858 50 0 47.7614 0 45V20C0 8.9543 8.9543 0 20 0C31.0457 0 40 8.95431 40 20V45C40 47.7614 37.7614 50 35 50C32.2386 50 30 47.7614 30 45V20C30 14.4772 25.5228 10 20 10Z" fill="currentColor"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M120 10C114.477 10 110 14.4772 110 20V45C110 47.7614 107.761 50 105 50C102.239 50 100 47.7614 100 45V20C100 8.9543 108.954 0 120 0C131.046 0 140 8.95431 140 20V45C140 47.7614 137.761 50 135 50C132.239 50 130 47.7614 130 45V20C130 14.4772 125.523 10 120 10Z" fill="currentColor"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M170 10C164.477 10 160 14.4772 160 20V30C160 35.5228 164.477 40 170 40C175.523 40 180 35.5228 180 30V20C180 14.4772 175.523 10 170 10ZM150 20C150 8.9543 158.954 0 170 0C181.046 0 190 8.95431 190 20V30C190 41.0457 181.046 50 170 50C158.954 50 150 41.0457 150 30V20Z" fill="currentColor"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M200 25C200 11.1929 211.193 0 225 0H225.5C228.261 0 230.5 2.23858 230.5 5C230.5 7.76142 228.261 10 225.5 10H225C216.716 10 210 16.7157 210 25C210 33.2843 216.716 40 225 40H225.5C228.261 40 230.5 42.2386 230.5 45C230.5 47.7614 228.261 50 225.5 50H225C211.193 50 200 38.8071 200 25Z" fill="currentColor"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M85 0C87.7614 0 90 2.23858 90 5V30.5C90 41.5457 81.0457 50.5 70 50.5C58.9543 50.5 50 41.5457 50 30.5V25C50 22.2386 52.2386 20 55 20C57.7614 20 60 22.2386 60 25V30.5C60 36.0229 64.4772 40.5 70 40.5C75.5228 40.5 80 36.0228 80 30.5V5C80 2.23858 82.2386 0 85 0Z" fill="currentColor"/>
+              <path d="M60 5C60 7.76142 57.7614 10 55 10C52.2386 10 50 7.76142 50 5C50 2.23858 52.2386 0 55 0C57.7614 0 60 2.23858 60 5Z" fill="currentColor"/>
+              <path d="M230 25.1C230 27.8614 227.761 30.1 225 30.1C222.239 30.1 220 27.8614 220 25.1C220 22.3386 222.239 20.1 225 20.1C227.761 20.1 230 22.3386 230 25.1Z" fill="currentColor"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M185 25C187.761 25 190 27.2386 190 30V48.8197C190 57.5656 185.059 65.5608 177.236 69.4721C174.766 70.7071 171.763 69.706 170.528 67.2361C169.293 64.7662 170.294 61.7628 172.764 60.5279C177.199 58.3105 180 53.7779 180 48.8197V30C180 27.2386 182.239 25 185 25Z" fill="currentColor"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M135 15C137.761 15 140 17.2386 140 20C140 28.0225 135.467 35.3565 128.292 38.9443L127.236 39.4721C124.766 40.7071 121.763 39.706 120.528 37.2361C119.293 34.7662 120.294 31.7628 122.764 30.5279L123.82 30C127.607 28.1061 130 24.2348 130 20C130 17.2386 132.239 15 135 15Z" fill="currentColor"/>
+            </svg>
           </NuxtLink>
 
           <!-- Navigation Icons -->
@@ -195,6 +232,20 @@ const orbitData = computed(() =>
 </template>
 
 <style scoped>
+.logo-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  border-radius: 9999px;
+  background: #00dc82;
+  filter: blur(60px);
+  z-index: -1;
+  pointer-events: none;
+}
+
 /*
   Elliptical orbits using split X/Y animations.
   Amplitudes come from CSS custom properties --rx and --ry set per element.
@@ -217,10 +268,9 @@ const orbitData = computed(() =>
 .small-planet {
   width: 12px;
   height: 12px;
-  background-color: #000;
+  background-color: var(--accent);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
 }
 
 .small-planet.big {

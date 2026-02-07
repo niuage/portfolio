@@ -52,7 +52,7 @@ const label = categoryLabels[category] ?? category
         class="flex items-start gap-6"
       >
         <!-- Project Icon -->
-        <div class="hidden sm:flex flex-shrink-0 w-14 h-14 bg-black rounded-2xl items-center justify-center">
+        <div class="hidden sm:flex flex-shrink-0 w-14 h-14 bg-[var(--accent-dark)] rounded-2xl items-center justify-center">
           <img :src="project.icon" :alt="project.title" class="w-7 h-7" />
         </div>
 
