@@ -234,13 +234,13 @@ const orbitData = computed(() =>
 <style scoped>
 .logo-glow {
   position: absolute;
-  top: 20%;
+  top: -90px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 160px;
   height: 160px;
   border-radius: 9999px;
-  background: #00dc82;
+  background: var(--accent-super-light);
   filter: blur(60px);
   z-index: -1;
   pointer-events: none;

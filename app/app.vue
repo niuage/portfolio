@@ -9,8 +9,9 @@
 
 <style>
 :root {
-  --accent: #06321E;
-  --accent-dark: #042415;
+  --accent: hwb(153 2% 80%);
+  --accent-dark: hwb(153 2% 85%);
+  --accent-super-light: hwb(153 2% 16%);
 }
 
 body {
