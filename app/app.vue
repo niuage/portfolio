@@ -15,6 +15,9 @@
   --accent-light: hwb(from var(--accent) h w 60%);
   --accent-super-light: hwb(from var(--accent) h w 16%);
 
+  --accent-small-planet: hwb(from var(--accent) h w 50%);
+  --planet-falloff: 70%;
+
   --menu-glow-opacity: 0.5;
   --nav-glow-size: 40px;
   --nav-glow-opacity: 0.6;
@@ -22,7 +25,7 @@
   --bg: #f3ebda;
   --planet-ring-inner: white;
   --planet-ring-outer: var(--bg);
-  --planet-shadow-opacity: 70%;
+  --planet-shadow-opacity: 30%;
   --planet-offset: -25%;
   --planet-icon-top: 17%;
 }

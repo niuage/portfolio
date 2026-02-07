@@ -146,7 +146,7 @@ function onNavMouseLeave() {
                   animationDelay: o.delay + 's',
                 }"
               >
-                <div class="small-planet" :class="{ big: o.big }"></div>
+                <div class="small-planet" :class="{ big: o.big }" :style="{ '--orbit-duration': o.duration + 's', '--orbit-delay': o.delay + 's' }"></div>
               </div>
             </div>
           </div>
@@ -171,7 +171,7 @@ function onNavMouseLeave() {
                   animationDelay: (o.delay - o.duration / 2) + 's',
                 }"
               >
-                <div class="small-planet" :class="{ big: o.big }"></div>
+                <div class="small-planet" :class="{ big: o.big }" :style="{ '--orbit-duration': o.duration + 's', '--orbit-delay': (o.delay - o.duration / 2) + 's' }"></div>
               </div>
             </div>
           </div>
@@ -401,10 +401,25 @@ function onNavMouseLeave() {
 .small-planet {
   width: 12px;
   height: 12px;
-  background-color: var(--accent);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 6px 3px color-mix(in srgb, var(--bg) var(--planet-shadow-opacity), transparent);
+  box-shadow: 0 0 20px 3px color-mix(in srgb, var(--bg) var(--planet-shadow-opacity), transparent);
+  overflow: hidden;
+  position: relative;
+}
+
+.small-planet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 0% 50%, var(--accent-small-planet) 0%, var(--accent-dark) var(--planet-falloff));
+  animation: planet-light var(--orbit-duration) var(--orbit-delay) infinite linear;
+}
+
+@keyframes planet-light {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
 }
 
 .small-planet.big {
