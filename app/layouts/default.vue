@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PlanetSvg from '~/assets/icons/planet.svg?skipsvgo';
+import PlanetSvg from '~/assets/icons/planet2.svg?skipsvgo';
 
 const config = useRuntimeConfig()
 const baseURL = config.app.baseURL
@@ -74,11 +74,9 @@ function onNavMouseLeave() {
 <template>
   <div class="min-h-screen relative">
     <!-- Planet (centered, outside border) -->
-    <div class="absolute left-1/2 -translate-x-1/2 top-0 w-[50vw] md:w-[30vw] max-w-[32rem] px-4 z-10">
+    <div class="absolute left-1/2 -translate-x-1/2 -top-px w-[50vw] md:w-[30vw] max-w-[32rem] px-4 z-10">
       <div class="relative">
-        <div class="overflow-hidden">
-          <PlanetSvg class="w-full" style="margin-top: var(--planet-offset)" />
-        </div>
+        <PlanetSvg class="w-full h-auto block" />
         <div class="planet-glow"></div>
 
         <!-- Section Icon Overlay -->

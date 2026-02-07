@@ -1,0 +1,14 @@
+<svg width="794" height="400" viewBox="0 0 794 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M397 400C616.257 400 794 220.914 794 0H0C0 220.914 177.743 400 397 400Z" fill="url(#ring-gradient)"/>
+<path d="M397 300C562.685 300 697 165.685 697 0H97C97 165.685 231.315 300 397 300Z" fill="url(#planet-gradient)"/>
+<defs>
+<radialGradient id="ring-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(397 200) rotate(90) scale(200 397)">
+<stop style="stop-color: var(--planet-ring-inner)"/>
+<stop offset="1" style="stop-color: var(--planet-ring-outer)"/>
+</radialGradient>
+<radialGradient id="planet-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(397) rotate(90) scale(300)">
+<stop offset="0.378704" stop-color="black"/>
+<stop offset="0.94711" style="stop-color: var(--accent-dark)"/>
+</radialGradient>
+</defs>
+</svg>

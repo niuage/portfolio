@@ -25,8 +25,7 @@
   --bg: #f3ebda;
   --planet-ring-inner: white;
   --planet-ring-outer: var(--bg);
-  --planet-shadow-opacity: 30%;
-  --planet-offset: -25%;
+  --planet-shadow-opacity: 0%;
   --planet-icon-top: 17%;
 }
 
