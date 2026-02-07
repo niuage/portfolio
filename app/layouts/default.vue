@@ -69,6 +69,24 @@ function onNavMouseMove(e: MouseEvent) {
 function onNavMouseLeave() {
   navGlowVisible.value = false
 }
+
+// --- Social sidebar glow ---
+const socialRef = ref<HTMLElement | null>(null)
+const socialGlowX = ref(0)
+const socialGlowY = ref(0)
+const socialGlowVisible = ref(false)
+
+function onSocialMouseMove(e: MouseEvent) {
+  const el = e.currentTarget as HTMLElement
+  const rect = el.getBoundingClientRect()
+  socialGlowX.value = e.clientX - rect.left
+  socialGlowY.value = e.clientY - rect.top
+  socialGlowVisible.value = true
+}
+
+function onSocialMouseLeave() {
+  socialGlowVisible.value = false
+}
 </script>
 
 <template>
@@ -177,6 +195,36 @@ function onNavMouseLeave() {
       </div>
     </div>
 
+    <!-- Social Sidebar (Right) -->
+    <div class="hidden md:block fixed right-4 top-1/2 -translate-y-1/2 z-50">
+      <div
+        class="social-sidebar flex flex-col gap-3 bg-[var(--accent-dark)] rounded-full px-2 py-3 relative overflow-hidden"
+        @mousemove="onSocialMouseMove"
+        @mouseleave="onSocialMouseLeave"
+      >
+        <div
+          class="social-glow"
+          :style="{
+            left: socialGlowX + 'px',
+            top: socialGlowY + 'px',
+            opacity: socialGlowVisible ? 'var(--menu-glow-opacity)' : 0,
+          }"
+        ></div>
+        <a href="#" target="_blank" class="social-icon">
+          <Icon name="artstation" />
+        </a>
+        <a href="#" target="_blank" class="social-icon">
+          <Icon name="twitter" />
+        </a>
+        <a href="#" target="_blank" class="social-icon">
+          <Icon name="bluesky" />
+        </a>
+        <a href="#" target="_blank" class="social-icon">
+          <Icon name="youtube" />
+        </a>
+      </div>
+    </div>
+
     <div class="min-h-screen bg-[var(--bg)] rounded-xl relative overflow-hidden">
       <!-- Fixed Bottom Menu (Desktop) -->
       <div
@@ -194,7 +242,7 @@ function onNavMouseLeave() {
           }"
         ></div>
         <NuxtLink to="/work" class="menu-icon" :class="{ 'menu-icon-active': route.path === '/work' }">
-          <Icon name="work" />
+          <Icon name="work" class="!w-5 !h-5" />
         </NuxtLink>
         <div class="w-px bg-white/20 my-2"></div>
         <NuxtLink to="/work/games" class="menu-icon" :class="{ 'menu-icon-active': route.path === '/work/games' }">
@@ -233,10 +281,11 @@ function onNavMouseLeave() {
         </div>
       </div>
 
+
       <!-- Main Content -->
       <div class="max-w-6xl mx-auto px-4 lg:px-8">
         <!-- Header with Planet -->
-        <header class="relative pt-40 md:pt-12 pb-32 md:pb-64 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-0 md:justify-between">
+        <header class="relative pt-40 md:pt-12 pb-32 md:pb-64 flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-0 md:justify-between">
           <!-- Logo -->
           <NuxtLink to="/" class="relative z-10 text-[var(--accent)]">
             <div class="logo-glow"></div>
@@ -256,7 +305,7 @@ function onNavMouseLeave() {
           <!-- Navigation Icons -->
           <nav
             ref="navRef"
-            class="flex items-center gap-10 relative z-10 overflow-visible"
+            class="flex items-center gap-10 relative z-10 overflow-visible md:p-12 md:-m-12"
             @mousemove="onNavMouseMove"
             @mouseleave="onNavMouseLeave"
           >
@@ -330,6 +379,45 @@ function onNavMouseLeave() {
 .menu-icon-active {
   transform: scale(1.1);
   color: white;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s;
+  padding: 2px;
+}
+
+.social-icon :deep(svg) {
+  width: 16px;
+  height: 16px;
+}
+
+.social-icon:hover {
+  color: white;
+}
+
+.social-glow {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 9999px;
+  background: var(--accent-super-light);
+  filter: blur(30px);
+  pointer-events: none;
+  transition: opacity var(--glow-fade-duration);
+}
+
+.social-sidebar {
+  box-shadow: 0 0 40px 10px color-mix(in srgb, var(--accent-super-light) 40%, transparent);
+  transition: box-shadow var(--glow-fade-duration);
+}
+
+.social-sidebar:hover {
+  box-shadow: 0 0 40px 10px transparent;
 }
 
 .menu-glow {

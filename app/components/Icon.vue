@@ -11,6 +11,10 @@ import IconGames from '~/assets/icons/icon_games.svg'
 import IconWeb from '~/assets/icons/icon_web.svg'
 import IconIllustration from '~/assets/icons/icon_illustration.svg'
 import Icon3d from '~/assets/icons/icon_3d.svg'
+import IconTpArtstation from '~/assets/icons/third_party_icons/icon_tp_artstation.svg'
+import IconTpTwitter from '~/assets/icons/third_party_icons/icon_tp_twitter.svg'
+import IconTpBluesky from '~/assets/icons/third_party_icons/icon_tp_bluesky.svg'
+import IconTpYoutube from '~/assets/icons/third_party_icons/icon_tp_youtube.svg'
 
 defineProps<{ name: string }>()
 
@@ -23,5 +27,9 @@ const icons: Record<string, any> = {
   web: IconWeb,
   illustration: IconIllustration,
   '3d': Icon3d,
+  artstation: IconTpArtstation,
+  twitter: IconTpTwitter,
+  bluesky: IconTpBluesky,
+  youtube: IconTpYoutube,
 }
 </script>
