@@ -3,12 +3,12 @@
 <circle cx="397" r="300" fill="url(#paint1_radial_6_85)"/>
 <defs>
 <radialGradient id="paint0_radial_6_85" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(397) rotate(90) scale(400 397)">
-<stop stop-color="white"/>
-<stop offset="1" stop-color="#F3EBDA"/>
+<stop style="stop-color: var(--planet-ring-inner)"/>
+<stop offset="1" style="stop-color: var(--planet-ring-outer)"/>
 </radialGradient>
 <radialGradient id="paint1_radial_6_85" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(397) rotate(180) scale(300)">
 <stop offset="0.378704"/>
-<stop offset="0.94711" stop-color="#06321E"/>
+<stop offset="0.94711" style="stop-color: var(--accent-dark)"/>
 </radialGradient>
 </defs>
 </svg>

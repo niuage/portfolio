@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import PlanetSvg from '~/assets/icons/planet.svg?skipsvgo';
+
 const config = useRuntimeConfig()
 const baseURL = config.app.baseURL
 const route = useRoute()
@@ -74,10 +76,13 @@ function onNavMouseLeave() {
     <!-- Planet (centered, outside border) -->
     <div class="absolute left-1/2 -translate-x-1/2 top-0 w-[50vw] md:w-[30vw] max-w-[32rem] px-4 z-10">
       <div class="relative">
-        <img :src="`${baseURL}planet.png`" alt="Planet" class="w-full object-contain" />
+        <div class="overflow-hidden">
+          <PlanetSvg class="w-full" style="margin-top: var(--planet-offset)" />
+        </div>
+        <div class="planet-glow"></div>
 
         <!-- Section Icon Overlay -->
-        <div class="absolute left-1/2 -translate-x-1/2 text-white" style="top: 20%">
+        <div class="absolute left-1/2 -translate-x-1/2 text-white" style="top: var(--planet-icon-top)">
           <!-- Home -->
           <svg v-if="currentSection === 'home'" class="w-6 h-6" viewBox="0 0 37 40" fill="none">
             <path d="M3.5 23.5V18.5C3.5 10.2157 10.2157 3.5 18.5 3.5C26.7843 3.5 33.5 10.2157 33.5 18.5V23.5" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
@@ -174,11 +179,11 @@ function onNavMouseLeave() {
       </div>
     </div>
 
-    <div class="min-h-screen bg-[#f3ebda] rounded-xl relative overflow-hidden">
+    <div class="min-h-screen bg-[var(--bg)] rounded-xl relative overflow-hidden">
       <!-- Fixed Bottom Menu (Desktop) -->
       <div
         ref="menuRef"
-        class="hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-8 flex-row gap-4 bg-[var(--accent-dark)] rounded-full px-6 py-2 z-50 overflow-hidden"
+        class="hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-8 flex-row gap-4 bg-[var(--accent-dark)] rounded-full px-4 py-1 z-50 overflow-hidden"
         @mousemove="onMenuMouseMove"
         @mouseleave="onMenuMouseLeave"
       >
@@ -298,7 +303,7 @@ function onNavMouseLeave() {
 }
 
 .nav-icon-active {
-  color: var(--accent);
+  color: var(--accent-light);
 }
 
 .nav-glow {
@@ -341,9 +346,22 @@ function onNavMouseLeave() {
   transition: opacity var(--glow-fade-duration);
 }
 
-.logo-glow {
+.planet-glow {
   position: absolute;
-  top: -90px;
+  top: -40%;
+  right: 10%;
+  width: 120px;
+  height: 120px;
+  border-radius: 9999px;
+  background: var(--accent-super-light);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.logo-glow {
+  display: none;
+  position: absolute;
+  top: -150px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 160px;
@@ -353,6 +371,12 @@ function onNavMouseLeave() {
   filter: blur(60px);
   z-index: -1;
   pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .logo-glow {
+    display: block;
+  }
 }
 
 /*
@@ -380,6 +404,7 @@ function onNavMouseLeave() {
   background-color: var(--accent);
   border-radius: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px 3px color-mix(in srgb, var(--bg) var(--planet-shadow-opacity), transparent);
 }
 
 .small-planet.big {
