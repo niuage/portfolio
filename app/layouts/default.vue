@@ -348,12 +348,20 @@ function onNavMouseLeave() {
   position: absolute;
   top: -40%;
   right: 10%;
-  width: 120px;
-  height: 120px;
+  width: 60px;
+  height: 60px;
   border-radius: 9999px;
   background: var(--accent-super-light);
-  filter: blur(60px);
+  filter: blur(30px);
   pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .planet-glow {
+    width: 120px;
+    height: 120px;
+    filter: blur(60px);
+  }
 }
 
 .logo-glow {
