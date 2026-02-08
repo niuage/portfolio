@@ -62,7 +62,7 @@ function onNavMouseLeave() {
           <!-- Navigation Icons -->
           <nav
             ref="navRef"
-            class="flex items-center gap-10 relative z-10 overflow-visible md:p-12 md:-m-12"
+            class="flex items-center gap-10 relative overflow-visible md:p-12 md:-m-12"
             @mousemove="onNavMouseMove"
             @mouseleave="onNavMouseLeave"
           >

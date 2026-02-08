@@ -9,6 +9,7 @@ export const useProjects = async (category?: string) => {
   const projects = computed(() => {
     let items = (data.value || []).map((p: any) => ({
       id: p._id,
+      path: p.path,
       title: p.title,
       date: p.date,
       category: p.category,

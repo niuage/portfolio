@@ -29,7 +29,7 @@ const orbitData = computed(() =>
 </script>
 
 <template>
-  <div class="absolute left-1/2 -translate-x-1/2 -top-px w-[50vw] md:w-[30vw] max-w-[32rem] px-4 z-10">
+  <div class="absolute left-1/2 -translate-x-1/2 -top-px w-[50vw] md:w-[30vw] max-w-[32rem] px-4 z-10 pointer-events-none">
     <div class="relative">
       <PlanetSvg class="w-full h-auto block" />
       <div class="planet-glow"></div>

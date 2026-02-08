@@ -2,6 +2,7 @@
 defineProps<{
   project: {
     icon: string
+    path: string
     thumbnail: string
     video?: string
     title: string
@@ -67,7 +68,7 @@ onMounted(() => {
 
     <!-- Project Card -->
     <div class="flex-1">
-      <div class="rounded-3xl overflow-hidden">
+      <NuxtLink :to="project.path" class="block rounded-3xl overflow-hidden">
         <video
           v-if="project.video"
           ref="videoRef"
@@ -85,11 +86,13 @@ onMounted(() => {
           :alt="project.title"
           class="w-full h-64 object-cover"
         />
-      </div>
+      </NuxtLink>
 
       <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h2 class="text-[2rem] font-medium mb-1">{{ project.title }}</h2>
+          <NuxtLink :to="project.path" class="hover:opacity-80 transition-opacity">
+            <h2 class="text-[2rem] font-medium mb-1">{{ project.title }}</h2>
+          </NuxtLink>
           <p class="text-sm">{{ project.date }}</p>
         </div>
         <div>
