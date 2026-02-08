@@ -8,10 +8,17 @@
 </template>
 
 <style>
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: hwb(153 2% 80%);
+}
+
 :root {
   --accent: hwb(153 2% 80%);
+  transition: --accent 0.5s;
   /* --accent: hwb(256 6% 60%); */
-  --accent-dark: hwb(from var(--accent) h w 85%);
+  --accent-dark: hwb(from var(--accent) h w 80%);
   --accent-light: hwb(from var(--accent) h w 60%);
   --accent-super-light: hwb(from var(--accent) h w 16%);
   --accent-nav-active: hwb(from var(--accent) h w 70%);

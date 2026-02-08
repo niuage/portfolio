@@ -27,7 +27,7 @@ defineProps<{
         />
       </div>
 
-      <div class="mt-6 grid grid-cols-2 gap-8">
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <h2 class="text-[2rem] font-medium mb-1">{{ project.title }}</h2>
           <p class="text-sm">{{ project.date }}</p>

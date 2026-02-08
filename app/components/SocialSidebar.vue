@@ -20,6 +20,9 @@ const colors = [
   { name: 'green', value: 'hwb(153 2% 80%)' },
   { name: 'purple', value: 'hwb(256 6% 60%)' },
   { name: 'blue', value: 'hwb(210 5% 70%)' },
+  { name: 'orange', value: 'hwb(30 5% 80%)' },
+  { name: 'pink', value: 'hwb(320 5% 80%)' },
+  { name: 'teal', value: 'hwb(180 5% 70%)' },
 ]
 
 const activeColor = ref(colors[0].value)
@@ -114,7 +117,7 @@ onMounted(() => {
 }
 
 .social-sidebar {
-  box-shadow: 0 0 40px 10px color-mix(in srgb, var(--accent-super-light) 40%, transparent);
+  box-shadow: 0 0 40px 10px color-mix(in srgb, var(--accent-super-light) 20%, transparent);
   transition: box-shadow var(--glow-fade-duration);
 }
 
