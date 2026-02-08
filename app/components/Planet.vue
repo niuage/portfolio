@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PlanetSvg from '~/assets/icons/planet2.svg?skipsvgo';
+import PlanetSvg from '~/assets/icons/planet3.svg?skipsvgo';
 
 defineProps<{
   currentSection: string

@@ -83,7 +83,7 @@ function onMouseLeave() {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
   transition: transform 0.2s, color 0.2s;
 }
 

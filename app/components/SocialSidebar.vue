@@ -104,7 +104,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
   transition: color 0.2s;
   padding: 2px;
   cursor: pointer;
@@ -161,7 +161,7 @@ onMounted(() => {
   justify-content: center;
   border: none;
   background: transparent;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   transition: color 0.2s;
   padding: 2px;

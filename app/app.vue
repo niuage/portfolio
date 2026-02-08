@@ -59,6 +59,8 @@
   --accent-super-light: hwb(from var(--accent) h w 16%);
   --accent-nav-active: hwb(from var(--accent) h w 70%);
 
+  --accent-link: hwb(from var(--accent) h w 40%);
+
   --accent-small-planet: hwb(from var(--accent) h w 50%);
   --planet-falloff: 70%;
 
@@ -73,7 +75,7 @@
   --text-faint: #9ca3af;
   --text-separator: #d1d5db;
   --heading: var(--accent);
-  --main-planet-inner: var(--accent);
+  --main-planet-inner: hwb(from var(--accent) h w 89%);
   --main-planet-outer: var(--accent-dark);
   --planet-ring-inner: var(--bg);
   --planet-ring-outer: var(--bg);
@@ -84,7 +86,7 @@
 
 @media (min-width: 768px) {
   :root {
-    --orbit-scale: 1.1;
+    --orbit-scale: 1;
   }
 }
 
@@ -100,6 +102,14 @@ p {
   color: var(--text);
 }
 
+a {
+  color: var(--accent-link);
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
 :root.dark {
   --bg: hwb(132 9% 87%);
   --text: #e5e5e5;
@@ -111,7 +121,7 @@ p {
   --accent-dark: hwb(132 9% 89%);
   --accent-super-light: hwb(from var(--bg) h w 50%);
   --accent-nav-active: var(--accent);
-  --main-planet-inner: black;
+  --main-planet-inner: hwb(132 9% 95%);
   --main-planet-outer: hwb(132 9% 84%);
 }
 </style>
