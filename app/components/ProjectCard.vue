@@ -30,10 +30,10 @@ defineProps<{
       <div class="mt-6 grid grid-cols-2 gap-8">
         <div>
           <h2 class="text-[2rem] font-medium mb-1">{{ project.title }}</h2>
-          <p class="text-sm text-gray-600">{{ project.date }}</p>
+          <p class="text-sm">{{ project.date }}</p>
         </div>
         <div>
-          <p class="text-gray-700">{{ project.description }}</p>
+          <p>{{ project.description }}</p>
         </div>
       </div>
     </div>

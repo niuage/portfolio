@@ -29,6 +29,6 @@ const label = categoryLabels[category] ?? category
       />
     </div>
 
-    <p v-else class="text-gray-600">No projects in this category yet.</p>
+    <p v-else>No projects in this category yet.</p>
   </div>
 </template>

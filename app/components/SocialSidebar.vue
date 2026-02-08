@@ -31,17 +31,17 @@ function onMouseLeave() {
           opacity: glowVisible ? 'var(--menu-glow-opacity)' : 0,
         }"
       ></div>
-      <a href="#" target="_blank" class="social-icon">
+      <a href="https://www.youtube.com/@niuage" target="_blank" class="social-icon">
+        <Icon name="youtube" />
+      </a>
+      <a href="https://niuage.artstation.com" target="_blank" class="social-icon">
         <Icon name="artstation" />
       </a>
-      <a href="#" target="_blank" class="social-icon">
+      <a href="https://twitter.com/niuage" target="_blank" class="social-icon">
         <Icon name="twitter" />
       </a>
-      <a href="#" target="_blank" class="social-icon">
+      <a href="https://bsky.app/profile/niuage.bsky.social" target="_blank" class="social-icon">
         <Icon name="bluesky" />
-      </a>
-      <a href="#" target="_blank" class="social-icon">
-        <Icon name="youtube" />
       </a>
     </div>
   </div>

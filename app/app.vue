@@ -22,12 +22,12 @@
   --menu-glow-opacity: 0.5;
   --nav-glow-size: 40px;
   --nav-glow-opacity: 0.6;
-  --glow-fade-duration: 1.5s;
+  --glow-fade-duration: 1s;
   --bg: #f3ebda;
   --planet-ring-inner: white;
   --planet-ring-outer: var(--bg);
   --planet-shadow-opacity: 0%;
-  --planet-icon-top: 17%;
+  --planet-icon-top: 25%;
   --orbit-scale: 1.4;
 }
 
@@ -43,5 +43,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--accent);
+}
+
+p {
+  color: black;
 }
 </style>

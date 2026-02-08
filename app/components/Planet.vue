@@ -160,8 +160,8 @@ const orbitData = computed(() =>
 }
 
 .small-planet {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 20px 3px color-mix(in srgb, var(--bg) var(--planet-shadow-opacity), transparent);
@@ -184,8 +184,19 @@ const orbitData = computed(() =>
 }
 
 .small-planet.big {
-  width: 24px;
-  height: 24px;
+  width: 17px;
+  height: 17px;
+}
+
+@media (min-width: 768px) {
+  .small-planet {
+    width: 12px;
+    height: 12px;
+  }
+  .small-planet.big {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .orbit-x { animation: ellipse-x infinite; }
