@@ -3,11 +3,29 @@ defineProps<{
   project: {
     icon: string
     thumbnail: string
+    video?: string
     title: string
     date: string
     description: string
   }
 }>()
+
+const videoRef = ref<HTMLVideoElement>()
+const videoVisible = ref(false)
+
+onMounted(() => {
+  if (!videoRef.value) return
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        videoVisible.value = true
+        observer.disconnect()
+      }
+    },
+    { rootMargin: '200px' }
+  )
+  observer.observe(videoRef.value)
+})
 </script>
 
 <template>
@@ -20,7 +38,19 @@ defineProps<{
     <!-- Project Card -->
     <div class="flex-1">
       <div class="rounded-3xl overflow-hidden">
+        <video
+          v-if="project.video"
+          ref="videoRef"
+          :src="videoVisible ? project.video : undefined"
+          :poster="project.thumbnail"
+          autoplay
+          loop
+          muted
+          playsinline
+          class="w-full h-64 object-cover"
+        />
         <img
+          v-else
           :src="project.thumbnail"
           :alt="project.title"
           class="w-full h-64 object-cover"

@@ -15,6 +15,7 @@ import IconTpArtstation from '~/assets/icons/third_party_icons/icon_tp_artstatio
 import IconTpTwitter from '~/assets/icons/third_party_icons/icon_tp_twitter.svg'
 import IconTpBluesky from '~/assets/icons/third_party_icons/icon_tp_bluesky.svg'
 import IconTpYoutube from '~/assets/icons/third_party_icons/icon_tp_youtube.svg'
+import IconTpLinktree from '~/assets/icons/third_party_icons/icon_tp_linktree.svg'
 
 defineProps<{ name: string }>()
 
@@ -31,5 +32,6 @@ const icons: Record<string, any> = {
   twitter: IconTpTwitter,
   bluesky: IconTpBluesky,
   youtube: IconTpYoutube,
+  linktree: IconTpLinktree,
 }
 </script>

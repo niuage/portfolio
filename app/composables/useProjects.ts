@@ -14,6 +14,7 @@ export const useProjects = async (category?: string) => {
       category: p.category,
       description: p.description,
       thumbnail: `${baseURL}${p.thumbnail}`,
+      video: p.video ? `${baseURL}${p.video}` : undefined,
       icon: p.icon,
     }))
     if (category) items = items.filter(p => p.category === category)

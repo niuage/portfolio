@@ -40,7 +40,7 @@ function onNavMouseLeave() {
       <WorkMenu />
 
       <!-- Main Content -->
-      <div class="max-w-6xl mx-auto px-4 lg:px-8">
+      <div class="max-w-6xl mx-auto px-4 md:pr-8 md:pl-4 lg:px-8">
         <!-- Header with Planet -->
         <header class="relative pt-40 md:pt-12 pb-32 md:pb-64 flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-0 md:justify-between">
           <!-- Logo -->

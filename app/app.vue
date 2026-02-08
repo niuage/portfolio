@@ -30,8 +30,9 @@
   --nav-glow-size: 40px;
   --nav-glow-opacity: 0.6;
   --glow-fade-duration: 1s;
-  --bg: #f3ebda;
-  --planet-ring-inner: white;
+  /* --bg: #f3ebda; */
+  --bg: white;
+  --planet-ring-inner: var(--bg);
   --planet-ring-outer: var(--bg);
   --planet-shadow-opacity: 0%;
   --planet-icon-top: 25%;

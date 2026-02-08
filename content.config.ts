@@ -17,6 +17,7 @@ export default defineContentConfig({
         category: z.string(),
         description: z.string(),
         thumbnail: z.string(),
+        video: z.string().optional(),
         icon: z.string(),
       }),
     }),

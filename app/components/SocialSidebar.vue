@@ -20,16 +20,36 @@ const colors = [
   { name: 'green', value: 'hwb(153 2% 80%)' },
   { name: 'purple', value: 'hwb(256 6% 60%)' },
   { name: 'blue', value: 'hwb(210 5% 70%)' },
-  { name: 'orange', value: 'hwb(30 5% 80%)' },
   { name: 'pink', value: 'hwb(320 5% 80%)' },
   { name: 'teal', value: 'hwb(180 5% 70%)' },
+  { name: 'black', value: 'hwb(0 0% 100%)' },
 ]
 
 const activeColor = ref(colors[0].value)
 
+const derivedProps = ['--accent-dark', '--accent-light', '--accent-super-light', '--accent-nav-active', '--accent-small-planet'] as const
+
+function applyAccent(color: string) {
+  const root = document.documentElement.style
+  root.setProperty('--accent', color)
+
+  const isBlack = color === 'hwb(0 0% 100%)'
+  if (isBlack) {
+    // Override derived colors with achromatic greys (W+B=100% keeps hue invisible)
+    root.setProperty('--accent-dark', 'hwb(0 20% 80%)')
+    root.setProperty('--accent-light', 'hwb(0 40% 60%)')
+    root.setProperty('--accent-super-light', 'hwb(0 84% 16%)')
+    root.setProperty('--accent-nav-active', 'hwb(0 30% 70%)')
+    root.setProperty('--accent-small-planet', 'hwb(0 50% 50%)')
+  } else {
+    // Clear overrides so CSS relative color derivation takes over
+    for (const prop of derivedProps) root.removeProperty(prop)
+  }
+}
+
 function setAccent(color: string) {
   activeColor.value = color
-  document.documentElement.style.setProperty('--accent', color)
+  applyAccent(color)
   localStorage.setItem('accent-color', color)
 }
 
@@ -37,7 +57,7 @@ onMounted(() => {
   const saved = localStorage.getItem('accent-color')
   if (saved) {
     activeColor.value = saved
-    document.documentElement.style.setProperty('--accent', saved)
+    applyAccent(saved)
   }
 })
 </script>
@@ -69,6 +89,9 @@ onMounted(() => {
       <a href="https://bsky.app/profile/niuage.bsky.social" target="_blank" class="social-icon">
         <Icon name="bluesky" />
       </a>
+      <a href="https://linktr.ee/niuage" target="_blank" class="social-icon">
+        <Icon name="linktree" />
+      </a>
     </div>
 
     <!-- Color Picker -->
@@ -83,6 +106,15 @@ onMounted(() => {
       ></button>
     </div>
   </div>
+
+  <!-- Mobile floating Linktree button -->
+  <a
+    href="https://linktr.ee/niuage"
+    target="_blank"
+    class="md:hidden fixed right-8 bottom-24 z-50 w-14 h-14 rounded-full bg-[var(--accent-dark)] flex items-center justify-center text-white shadow-lg"
+  >
+    <Icon name="linktree" />
+  </a>
 </template>
 
 <style scoped>
