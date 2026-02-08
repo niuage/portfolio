@@ -38,6 +38,9 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/portfolio/',
     head: {
+      script: [
+        { innerHTML: "if(localStorage.getItem('dark-mode')==='true')document.documentElement.classList.add('dark')", tagPosition: 'head' },
+      ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },

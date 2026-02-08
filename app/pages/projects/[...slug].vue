@@ -34,9 +34,9 @@ const video = computed(() => project.value?.video ? `${baseURL}${project.value.v
   <div v-if="project" class="pb-24 lg:pb-12">
     <div class="mb-12">
       <div class="flex items-center gap-2 mb-4">
-        <NuxtLink to="/work" class="text-gray-400 hover:text-black transition-colors text-lg">Work</NuxtLink>
-        <span class="text-gray-300 text-lg">/</span>
-        <NuxtLink :to="`/work/${project.category}`" class="text-gray-400 hover:text-black transition-colors text-lg">{{ categoryLabel }}</NuxtLink>
+        <NuxtLink to="/work" class="text-[var(--text-muted)] hover:text-[var(--text)] transition-colors text-lg">Work</NuxtLink>
+        <span class="text-[var(--text-separator)] text-lg">/</span>
+        <NuxtLink :to="`/work/${project.category}`" class="text-[var(--text-muted)] hover:text-[var(--text)] transition-colors text-lg">{{ categoryLabel }}</NuxtLink>
       </div>
       <h1 class="text-5xl font-medium mb-2">{{ project.title }}</h1>
       <p class="text-sm">{{ project.date }}</p>

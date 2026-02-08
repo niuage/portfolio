@@ -15,57 +15,51 @@ function onMouseLeave() {
   glowVisible.value = false
 }
 
-// --- Color picker ---
-const colors = [
-  { name: 'green', value: 'hwb(153 2% 80%)' },
-  { name: 'purple', value: 'hwb(256 6% 60%)' },
-  { name: 'blue', value: 'hwb(210 5% 70%)' },
-  { name: 'pink', value: 'hwb(320 5% 80%)' },
-  { name: 'teal', value: 'hwb(180 5% 70%)' },
-  { name: 'black', value: 'hwb(0 0% 100%)' },
-]
+// --- Dark mode ---
+const isDark = ref(false)
 
-const activeColor = ref(colors[0].value)
-
-const derivedProps = ['--accent-dark', '--accent-light', '--accent-super-light', '--accent-nav-active', '--accent-small-planet'] as const
-
-function applyAccent(color: string) {
-  const root = document.documentElement.style
-  root.setProperty('--accent', color)
-
-  const isBlack = color === 'hwb(0 0% 100%)'
-  if (isBlack) {
-    // Override derived colors with achromatic greys (W+B=100% keeps hue invisible)
-    root.setProperty('--accent-dark', 'hwb(0 20% 80%)')
-    root.setProperty('--accent-light', 'hwb(0 40% 60%)')
-    root.setProperty('--accent-super-light', 'hwb(0 84% 16%)')
-    root.setProperty('--accent-nav-active', 'hwb(0 30% 70%)')
-    root.setProperty('--accent-small-planet', 'hwb(0 50% 50%)')
-  } else {
-    // Clear overrides so CSS relative color derivation takes over
-    for (const prop of derivedProps) root.removeProperty(prop)
-  }
-}
-
-function setAccent(color: string) {
-  activeColor.value = color
-  applyAccent(color)
-  localStorage.setItem('accent-color', color)
+function toggleDark() {
+  isDark.value = !isDark.value
+  document.documentElement.classList.toggle('dark', isDark.value)
+  localStorage.setItem('dark-mode', isDark.value ? 'true' : 'false')
 }
 
 onMounted(() => {
-  const saved = localStorage.getItem('accent-color')
-  if (saved) {
-    activeColor.value = saved
-    applyAccent(saved)
+  const savedDark = localStorage.getItem('dark-mode')
+  if (savedDark === 'true') {
+    isDark.value = true
+    document.documentElement.classList.add('dark')
   }
 })
 </script>
 
 <template>
-  <div class="hidden md:flex fixed right-4 lg:right-auto lg:left-4 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-4">
+  <div class="hidden md:flex fixed right-4 lg:right-auto lg:left-4 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-4 pointer-events-none">
+    <!-- Dark Mode Toggle -->
+    <div class="dark-toggle-pill bg-[var(--accent-dark)] rounded-full px-2 py-2 lg:px-3 lg:py-3 pointer-events-auto">
+      <button class="dark-toggle" @click="toggleDark" :title="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+        <!-- Sun icon (shown in dark mode) -->
+        <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg v-else xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Social Links -->
     <div
-      class="social-sidebar flex flex-col gap-3 bg-[var(--accent-dark)] rounded-full px-2 py-3 lg:px-3 lg:py-4 relative overflow-hidden"
+      class="social-sidebar flex flex-col gap-3 bg-[var(--accent-dark)] rounded-full px-2 py-3 lg:px-3 lg:py-4 relative overflow-hidden pointer-events-auto"
       @mousemove="onMouseMove"
       @mouseleave="onMouseLeave"
     >
@@ -93,18 +87,6 @@ onMounted(() => {
         <Icon name="linktree" />
       </a>
     </div>
-
-    <!-- Color Picker -->
-    <div class="flex flex-col gap-2">
-      <button
-        v-for="color in colors"
-        :key="color.name"
-        class="color-dot"
-        :class="{ active: activeColor === color.value }"
-        :style="{ '--dot-color': color.value }"
-        @click="setAccent(color.value)"
-      ></button>
-    </div>
   </div>
 
   <!-- Mobile floating Linktree button -->
@@ -125,6 +107,7 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.5);
   transition: color 0.2s;
   padding: 2px;
+  cursor: pointer;
 }
 
 .social-icon :deep(svg) {
@@ -161,28 +144,36 @@ onMounted(() => {
 .social-sidebar {
   box-shadow: 0 0 40px 10px color-mix(in srgb, var(--accent-super-light) 20%, transparent);
   transition: box-shadow var(--glow-fade-duration);
+  cursor: pointer;
+}
+
+.dark-toggle-pill {
+  cursor: pointer;
 }
 
 .social-sidebar:hover {
   box-shadow: 0 0 40px 10px transparent;
 }
 
-.color-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--dot-color);
-  border: 2px solid transparent;
+.dark-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: color 0.2s;
+  padding: 2px;
 }
 
-.color-dot:hover {
-  transform: scale(1.3);
+.dark-toggle:hover {
+  color: white;
 }
 
-.color-dot.active {
-  border-color: var(--dot-color);
-  box-shadow: 0 0 0 2px var(--bg);
+@media (min-width: 1024px) {
+  .dark-toggle {
+    padding: 4px;
+  }
 }
 </style>

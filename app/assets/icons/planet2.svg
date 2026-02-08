@@ -7,8 +7,8 @@
 <stop offset="1" style="stop-color: var(--planet-ring-outer)"/>
 </radialGradient>
 <radialGradient id="planet-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(397) rotate(90) scale(300)">
-<stop offset="0.378704" stop-color="black"/>
-<stop offset="0.94711" style="stop-color: var(--accent-dark)"/>
+<stop offset="0.378704" style="stop-color: var(--main-planet-inner)"/>
+<stop offset="0.94711" style="stop-color: var(--main-planet-outer)"/>
 </radialGradient>
 </defs>
 </svg>

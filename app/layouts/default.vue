@@ -35,7 +35,7 @@ function onNavMouseLeave() {
     <!-- Social Sidebar -->
     <SocialSidebar />
 
-    <div class="min-h-screen bg-[var(--bg)] rounded-xl relative overflow-hidden">
+    <div class="min-h-screen bg-[var(--bg)] relative overflow-hidden">
       <!-- Work Menu (Desktop + Mobile) -->
       <WorkMenu />
 
@@ -98,7 +98,7 @@ function onNavMouseLeave() {
 
 <style scoped>
 .nav-icon {
-  color: black;
+  color: var(--text);
   transition: transform 0.2s, color 0.2s;
 }
 
