@@ -63,9 +63,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="hidden md:flex fixed right-4 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-4">
+  <div class="hidden md:flex fixed right-4 lg:right-auto lg:left-4 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-4">
     <div
-      class="social-sidebar flex flex-col gap-3 bg-[var(--accent-dark)] rounded-full px-2 py-3 relative overflow-hidden"
+      class="social-sidebar flex flex-col gap-3 bg-[var(--accent-dark)] rounded-full px-2 py-3 lg:px-3 lg:py-4 relative overflow-hidden"
       @mousemove="onMouseMove"
       @mouseleave="onMouseLeave"
     >
@@ -134,6 +134,16 @@ onMounted(() => {
 
 .social-icon:hover {
   color: white;
+}
+
+@media (min-width: 1024px) {
+  .social-icon {
+    padding: 4px;
+  }
+  .social-icon :deep(svg) {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .social-glow {
