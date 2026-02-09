@@ -5,7 +5,7 @@ const { data: about } = await useAsyncData('about', () =>
 </script>
 
 <template>
-  <div class="pb-24 lg:pb-12">
+  <div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
       <!-- Content -->
       <div>

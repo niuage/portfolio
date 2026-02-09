@@ -15,7 +15,7 @@ const projects = await useProjects()
   </div>
 
   <!-- Projects Grid -->
-  <div class="space-y-20 pb-24 lg:pb-12">
+  <div class="space-y-20">
     <ProjectCard
       v-for="project in projects"
       :key="project.id"

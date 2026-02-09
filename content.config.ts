@@ -6,7 +6,7 @@ export default defineContentConfig({
       type: 'page',
       source: {
         include: '**',
-        exclude: ['projects/**'],
+        exclude: ['projects/**', 'articles/**'],
       },
     }),
     projects: defineCollection({
@@ -19,6 +19,14 @@ export default defineContentConfig({
         thumbnail: z.string(),
         video: z.string().optional(),
         icon: z.string(),
+      }),
+    }),
+    articles: defineCollection({
+      type: 'page',
+      source: 'articles/**',
+      schema: z.object({
+        date: z.string(),
+        description: z.string(),
       }),
     }),
   },

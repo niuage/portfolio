@@ -31,7 +31,7 @@ const video = computed(() => project.value?.video ? `${baseURL}${project.value.v
 </script>
 
 <template>
-  <div v-if="project" class="pb-24 lg:pb-12">
+  <div v-if="project">
     <div class="mb-12">
       <div class="flex items-center gap-2 mb-4">
         <NuxtLink to="/work" class="text-[var(--text-muted)] hover:text-[var(--text)] transition-colors text-lg">Work</NuxtLink>

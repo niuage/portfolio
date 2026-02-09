@@ -14,7 +14,7 @@ const label = categoryLabels[category] ?? category
 </script>
 
 <template>
-  <div class="pb-24 lg:pb-12">
+  <div>
     <div class="flex items-center gap-4 mb-12">
       <NuxtLink to="/work" class="text-[var(--text-muted)] hover:text-[var(--text)] transition-colors text-4xl font-medium">Work</NuxtLink>
       <span class="text-[var(--text-separator)] text-4xl font-light">/</span>

@@ -90,7 +90,9 @@ function onNavMouseLeave() {
         </header>
 
         <!-- Page Content -->
-        <slot />
+        <div class="pb-24 lg:pb-24">
+          <slot />
+        </div>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@ const projects = await useProjects()
 </script>
 
 <template>
-  <div class="pb-24 lg:pb-12">
+  <div>
     <h1 class="text-4xl font-medium mb-12">Work</h1>
 
     <div class="space-y-20">
