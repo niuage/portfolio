@@ -6,6 +6,11 @@ export const useProjects = async (category?: string) => {
     queryCollection('projects').all()
   )
 
+  const parseDate = (d: string) => {
+    const [m, dd, y] = d.split('/')
+    return new Date(+y, +m - 1, +dd).getTime()
+  }
+
   const projects = computed(() => {
     let items = (data.value || []).map((p: any) => ({
       id: p._id,
@@ -19,6 +24,7 @@ export const useProjects = async (category?: string) => {
       icon: p.icon,
     }))
     if (category) items = items.filter(p => p.category === category)
+    items.sort((a, b) => parseDate(b.date) - parseDate(a.date))
     return items
   })
 

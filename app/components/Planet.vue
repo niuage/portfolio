@@ -136,10 +136,10 @@ const orbitData = computed(() =>
 <style scoped>
 .planet-glow {
   position: absolute;
-  top: -40%;
+  top: -50%;
   right: 0%;
-  width: 40%;
-  height: 40%;
+  width: 30%;
+  height: 30%;
   border-radius: 9999px;
   background: var(--accent-super-light);
   filter: blur(60px);

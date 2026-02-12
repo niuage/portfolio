@@ -61,16 +61,11 @@ const video = computed(() => project.value?.video ? `${baseURL}${project.value.v
       />
     </div>
 
-    <p class="mb-8">{{ project.description }}</p>
+    <p class="font-medium text-2xl mb-8">{{ project.description }}</p>
 
-    <div v-if="project.body" class="project-content">
+    <div v-if="project.body" class="prose-content">
       <ContentRenderer :value="project" />
     </div>
   </div>
 </template>
 
-<style scoped>
-.project-content :deep(p) {
-  margin-bottom: 1rem;
-}
-</style>

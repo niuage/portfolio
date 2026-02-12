@@ -91,7 +91,7 @@
 }
 
 body {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -117,7 +117,8 @@ a:hover {
   --text-faint: #737373;
   --text-separator: #525252;
   --heading: white;
-  --accent: hwb(56 15% 26%);
+  --accent: hwb(48 2% 5%);
+  --accent-link: hwb(from var(--accent) h w 12%);
   --accent-dark: hwb(132 9% 89%);
   --accent-super-light: hwb(from var(--bg) h w 50%);
   --accent-nav-active: var(--accent);
